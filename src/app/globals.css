@@ -1,0 +1,258 @@
+@import "tailwindcss";
+
+/* 빛으로교회 브랜드 토큰 — 로고 시안 1에서 추출 */
+@theme {
+  --color-brand-yellow: #f0ce74;
+  --color-brand-blue: #3559a5;
+  --color-navy: #16264a;
+  --color-cream: #fbf8f1;
+  --color-ink: #1c2233;
+  --color-sub: #646b7d;
+  --color-line: #e7e2d6;
+  --color-sky: #8fb0ee;
+  --color-paper: #ece7db;
+
+  --ease-curtain: cubic-bezier(0.645, 0, 0, 1);
+  --ease-bounce: cubic-bezier(0.17, 0.67, 0.3, 1.33);
+
+  --shadow-card: 0 1px 0 var(--color-line), 0 14px 34px -24px rgb(22 38 74 / 0.35);
+}
+
+@theme inline {
+  --font-sans: "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+  --font-en: var(--font-outfit), "Pretendard Variable", Pretendard, system-ui, sans-serif;
+}
+
+/* 영문 오버라인 라벨 (SUNDAY, MATTHEW 5:14 등) */
+@utility eyebrow {
+  font-family: var(--font-en);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+html {
+  color-scheme: light;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-brand-blue);
+  outline-offset: 2px;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ---------- 로고: 어디서나 같은 형태, 배경에 따라 색만 바뀜 ---------- */
+.logo {
+  position: relative;
+  display: block;
+  flex: none;
+  aspect-ratio: 247 / 80;
+  color: var(--color-brand-blue);
+  --mk-y: var(--color-brand-yellow);
+  --mk-b: var(--color-brand-blue);
+}
+.logo svg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 26.7%;
+  height: 100%;
+}
+.logo .wm {
+  position: absolute;
+  left: 30.36%;
+  top: 12.5%;
+  width: 69.64%;
+  height: 76.25%;
+  background: currentColor;
+  -webkit-mask: var(--wm) center / 100% 100% no-repeat;
+  mask: var(--wm) center / 100% 100% no-repeat;
+}
+.logo-dark {
+  color: var(--color-cream);
+  --mk-b: var(--color-sky);
+}
+
+/* ---------- 원형 버거 버튼 (components 레이어: lg:hidden 같은 유틸리티가 이길 수 있도록) ---------- */
+@layer components {
+  .burger {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    width: 42px;
+    height: 42px;
+    border-radius: 9999px;
+    background: var(--color-navy);
+    flex: none;
+  }
+  .burger span {
+    display: block;
+    width: 16px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--color-cream);
+  }
+  @media (min-width: 64rem) {
+    .burger {
+      width: 46px;
+      height: 46px;
+    }
+  }
+}
+
+/* ---------- 메뉴 drawer (trevornoah.com 스타일 커튼) ---------- */
+.drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-navy);
+  color: var(--color-cream);
+  clip-path: inset(0 0 100% 0);
+  visibility: hidden;
+  transition:
+    clip-path 0.9s var(--ease-curtain),
+    visibility 0s linear 0.9s;
+}
+.drawer[data-open="true"] {
+  clip-path: inset(0 0 0 0);
+  visibility: visible;
+  transition:
+    clip-path 0.9s var(--ease-curtain),
+    visibility 0s;
+}
+.d-item {
+  opacity: 0;
+  transform: translateY(50%);
+  transition:
+    opacity 0.3s var(--ease-curtain),
+    transform 0.3s var(--ease-curtain);
+}
+.drawer[data-open="true"] .d-item {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 0.6s var(--ease-curtain) calc(0.25s + var(--i) * 0.12s),
+    transform 0.6s var(--ease-bounce) calc(0.25s + var(--i) * 0.12s);
+}
+.d-row {
+  background: color-mix(in srgb, var(--color-cream) 7%, transparent);
+  transition: background 0.3s;
+}
+.d-row:hover {
+  background: color-mix(in srgb, var(--color-cream) 12%, transparent);
+}
+.d-arrow {
+  transition: transform 0.4s var(--ease-curtain);
+}
+.d-item[data-expanded="true"] .d-arrow {
+  transform: rotate(90deg);
+}
+.d-item[data-expanded="true"] .d-en {
+  color: var(--color-brand-yellow);
+}
+.d-sub {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.45s var(--ease-curtain);
+}
+.d-item[data-expanded="true"] .d-sub {
+  grid-template-rows: 1fr;
+}
+.d-sub > div {
+  overflow: hidden;
+}
+.d-foot {
+  opacity: 0;
+  transform: translateY(20%);
+  transition:
+    opacity 0.2s,
+    transform 0.2s;
+}
+.drawer[data-open="true"] .d-foot {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.9s var(--ease-bounce) 0.8s,
+    transform 0.9s var(--ease-bounce) 0.8s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drawer,
+  .drawer[data-open="true"],
+  .d-item,
+  .drawer[data-open="true"] .d-item,
+  .d-foot,
+  .drawer[data-open="true"] .d-foot,
+  .d-sub,
+  .d-arrow {
+    transition: none !important;
+  }
+}
+
+/* ---------- 주보 썸네일 플레이스홀더 (이미지가 없을 때) ---------- */
+.paper {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: 5px;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #fff;
+  padding: 12px 10px;
+  box-shadow:
+    0 1px 0 var(--color-line),
+    0 8px 18px -12px rgb(22 38 74 / 0.4);
+}
+.paper::before {
+  content: "";
+  height: 26px;
+  border-radius: 4px;
+  background: var(--color-navy);
+}
+.paper i {
+  display: block;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--color-line);
+}
+.paper i:nth-child(odd) {
+  width: 72%;
+}
+.paper-sm {
+  gap: 3px;
+  border-radius: 6px;
+  padding: 7px 6px;
+}
+.paper-sm::before {
+  height: 12px;
+  border-radius: 2px;
+}
+.paper-sm i {
+  height: 3px;
+}
