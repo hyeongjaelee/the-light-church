@@ -4,9 +4,16 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { Logo } from "@/components/brand";
 import { SocialLinks } from "@/components/social-links";
-import { fullAddress, MENU } from "@/lib/site";
+import { MENU, site } from "@/lib/site";
 
-export function MenuDrawer({ open, onClose, times }: { open: boolean; onClose: () => void; times: string[] }) {
+export function MenuDrawer({
+  open,
+  onClose,
+}: {
+  open: boolean;
+  onClose: () => void;
+  times: string[];
+}) {
   const [expanded, setExpanded] = useState<number | null>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
 
@@ -49,11 +56,16 @@ export function MenuDrawer({ open, onClose, times }: { open: boolean; onClose: (
           </button>
         </div>
 
-        <ul className="no-scrollbar flex flex-1 flex-col justify-end gap-1.5 overflow-y-auto py-6 lg:gap-2.5">
+        <ul className="no-scrollbar flex flex-1 flex-col gap-1.5 overflow-y-auto py-6 lg:gap-2.5">
           {MENU.map((m, i) => {
             const isOpen = expanded === i;
             return (
-              <li key={m.en} className="d-item" data-expanded={isOpen} style={{ "--i": i } as React.CSSProperties}>
+              <li
+                key={m.en}
+                className="d-item"
+                data-expanded={isOpen}
+                style={{ "--i": i } as React.CSSProperties}
+              >
                 <button
                   type="button"
                   className="d-row flex w-full items-center justify-between gap-2.5 rounded-full py-2.5 pr-2 pl-5.5 text-left lg:py-4 lg:pr-4 lg:pl-10"
@@ -64,7 +76,9 @@ export function MenuDrawer({ open, onClose, times }: { open: boolean; onClose: (
                     <span className="d-en font-en text-4xl leading-none font-extrabold tracking-tight lg:text-[76px]">
                       {m.short ?? m.en}
                     </span>
-                    <span className="text-xs font-medium opacity-60 lg:text-[17px]">{m.ko}</span>
+                    <span className="text-xs font-medium opacity-60 lg:text-[17px]">
+                      {m.ko}
+                    </span>
                   </span>
                   <span
                     className="d-arrow grid size-9 flex-none place-items-center rounded-full bg-brand-yellow font-bold text-navy lg:size-[62px] lg:text-2xl"
@@ -95,20 +109,9 @@ export function MenuDrawer({ open, onClose, times }: { open: boolean; onClose: (
           })}
         </ul>
 
-        <div className="d-foot flex items-end justify-between gap-3 border-t border-cream/15 px-2 pt-4 text-[11px] lg:pt-5 lg:text-sm">
-          <div className="grid min-w-0 text-cream/70">
-            {times.map((t, i) =>
-              i === 0 ? (
-                <b key={t} className="text-xs text-brand-yellow lg:text-base">
-                  {t}
-                </b>
-              ) : (
-                <span key={t}>{t}</span>
-              ),
-            )}
-            <span>{fullAddress}</span>
-          </div>
+        <div className="d-foot flex flex-col items-center gap-3 border-t border-cream/15 px-2 pt-4 text-[11px] lg:pt-5 lg:text-sm">
           <SocialLinks size="sm" />
+          <span>© 2026 {site.name}. All rights reserved.</span>
         </div>
       </div>
     </nav>

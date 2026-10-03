@@ -36,11 +36,17 @@ export type MenuItem = {
 
 export const MENU: MenuItem[] = [
   {
+    en: "PLANTING",
+    ko: "개척 준비 중",
+    href: "/planting",
+    sub: [],
+  },
+  {
     en: "ABOUT",
     ko: "소개",
     href: "/about/church",
     sub: [
-      { label: "교회소개", href: "/about/church" },
+      { label: "비전 · 핵심가치", href: "/about/church" },
       { label: "섬기는이들", href: "/about/people" },
       { label: "오시는길", href: "/about/location" },
       { label: "예배안내", href: "/about/worship" },
@@ -57,14 +63,14 @@ export const MENU: MenuItem[] = [
     ],
   },
   {
-    en: "NEW GENERATION",
+    en: "NEXT GENERATION",
     short: "N.G.",
     ko: "다음세대",
-    href: "/school/infant",
+    href: "/next-generation/infant",
     sub: [
-      { label: "영아부", href: "/school/infant" },
-      { label: "초등부", href: "/school/elementary" },
-      { label: "청년부", href: "/school/youth" },
+      { label: "영아부", href: "/next-generation/infant" },
+      { label: "초등부", href: "/next-generation/elementary" },
+      { label: "청년부", href: "/next-generation/youth" },
     ],
   },
   {

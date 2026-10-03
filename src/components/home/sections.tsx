@@ -182,8 +182,8 @@ export function Worship({ times }: { times: WorshipTime[] }) {
               <span
                 className={`eyebrow ${t.highlight ? "text-brand-yellow" : "text-brand-blue"}`}
               >
-                {t.kind === "school"
-                  ? "NEW GENERATION"
+                {t.kind === "next-generation"
+                  ? "NEXT GENERATION"
                   : (DAY_EN[t.day_label] ?? t.day_label)}
               </span>
               <h3 className="mt-2.5 text-[22px] font-bold tracking-tight">
@@ -232,17 +232,17 @@ export function Pastor() {
 }
 
 /* 다음세대: 모바일은 작은 타일, 데스크톱은 사진 카드 */
-export function School({ departments }: { departments: Department[] }) {
+export function NextGeneration({ departments }: { departments: Department[] }) {
   const tile = ["bg-[#fbefc9]", "bg-[#dce5f6]", "bg-navy text-cream"];
   return (
     <section className="border-t border-line">
       <Container className="grid gap-3.5 py-6.5 lg:gap-9 lg:py-[100px]">
         <div className="lg:hidden">
-          <SectionTitle en="New Generation" ko="다음세대" />
+          <SectionTitle en="Next Generation" ko="다음세대" />
         </div>
         <div className="hidden lg:block">
           <SectionTitle
-            en="New Generation"
+            en="Next Generation"
             ko="다음세대"
             description="다음 세대가 말씀 안에서 자라도록 함께 돕습니다."
             center
@@ -252,7 +252,7 @@ export function School({ departments }: { departments: Department[] }) {
           {departments.map((d, i) => (
             <Link
               key={d.slug}
-              href={`/school/${d.slug}`}
+              href={`/next-generation/${d.slug}`}
               className={`grid gap-0.5 rounded-2xl px-2.5 py-3.5 ${tile[i % 3]}`}
             >
               <small className="font-en text-[10px] font-semibold tracking-[0.08em] opacity-70">
@@ -289,7 +289,7 @@ export function School({ departments }: { departments: Department[] }) {
                 </h3>
                 <p className="mb-3.5 flex-1 text-sm text-sub">{d.intro}</p>
                 <Link
-                  href={`/school/${d.slug}`}
+                  href={`/next-generation/${d.slug}`}
                   className="text-sm font-bold text-navy"
                 >
                   자세히 보기 →

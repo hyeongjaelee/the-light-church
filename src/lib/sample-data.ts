@@ -67,7 +67,16 @@ export const sampleSermons: Sermon[] = [
   },
 ];
 
-const sundays = ["2026-09-27", "2026-09-20", "2026-09-13", "2026-09-06", "2026-08-30", "2026-08-23", "2026-08-16", "2026-08-09"];
+const sundays = [
+  "2026-09-27",
+  "2026-09-20",
+  "2026-09-13",
+  "2026-09-06",
+  "2026-08-30",
+  "2026-08-23",
+  "2026-08-16",
+  "2026-08-09",
+];
 
 export const sampleBulletins: Bulletin[] = sundays.map((d) => ({
   id: `b-${d}`,
@@ -79,17 +88,81 @@ export const sampleBulletins: Bulletin[] = sundays.map((d) => ({
 }));
 
 export const sampleWorshipTimes: WorshipTime[] = [
-  { id: "wt1", name: "주일 1부 예배", day_label: "주일", time: "09:00", place: "본당", kind: "worship", highlight: false, sort_order: 1 },
-  { id: "wt2", name: "주일 2부 예배", day_label: "주일", time: "11:00", place: "본당", kind: "worship", highlight: true, sort_order: 2 },
-  { id: "wt3", name: "수요예배", day_label: "수요일", time: "19:30", place: "본당", kind: "worship", highlight: false, sort_order: 3 },
-  { id: "wt4", name: "주일학교", day_label: "주일", time: "11:00", place: "교육관", kind: "school", highlight: false, sort_order: 4 },
+  {
+    id: "wt1",
+    name: "주일 1부 예배",
+    day_label: "주일",
+    time: "09:00",
+    place: "본당",
+    kind: "worship",
+    highlight: false,
+    sort_order: 1,
+  },
+  {
+    id: "wt2",
+    name: "주일 2부 예배",
+    day_label: "주일",
+    time: "11:00",
+    place: "본당",
+    kind: "worship",
+    highlight: true,
+    sort_order: 2,
+  },
+  {
+    id: "wt3",
+    name: "수요예배",
+    day_label: "수요일",
+    time: "19:30",
+    place: "본당",
+    kind: "worship",
+    highlight: false,
+    sort_order: 3,
+  },
+  {
+    id: "wt4",
+    name: "다음세대",
+    day_label: "주일",
+    time: "11:00",
+    place: "교육관",
+    kind: "next-generation",
+    highlight: false,
+    sort_order: 4,
+  },
 ];
 
 export const sampleStaff: Staff[] = [
-  { id: "st1", name: "[성함]", role: "담임목사", photo_url: null, bio: null, sort_order: 1 },
-  { id: "st2", name: "[성함]", role: "부목사", photo_url: null, bio: null, sort_order: 2 },
-  { id: "st3", name: "[성함]", role: "교육전도사", photo_url: null, bio: null, sort_order: 3 },
-  { id: "st4", name: "[성함]", role: "장로", photo_url: null, bio: null, sort_order: 4 },
+  {
+    id: "st1",
+    name: "[성함]",
+    role: "담임목사",
+    photo_url: null,
+    bio: null,
+    sort_order: 1,
+  },
+  {
+    id: "st2",
+    name: "[성함]",
+    role: "부목사",
+    photo_url: null,
+    bio: null,
+    sort_order: 2,
+  },
+  {
+    id: "st3",
+    name: "[성함]",
+    role: "교육전도사",
+    photo_url: null,
+    bio: null,
+    sort_order: 3,
+  },
+  {
+    id: "st4",
+    name: "[성함]",
+    role: "장로",
+    photo_url: null,
+    bio: null,
+    sort_order: 4,
+  },
 ];
 
 export const sampleDepartments: Department[] = [

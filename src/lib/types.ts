@@ -26,7 +26,7 @@ export type WorshipTime = {
   day_label: string;
   time: string; // HH:MM
   place: string | null;
-  kind: "worship" | "school";
+  kind: "worship" | "next-generation";
   highlight: boolean;
   sort_order: number;
 };
@@ -54,7 +54,10 @@ export type Department = {
   sort_order: number;
 };
 
-export const SERMON_CATEGORIES: Record<SermonCategory, { ko: string; en: string }> = {
+export const SERMON_CATEGORIES: Record<
+  SermonCategory,
+  { ko: string; en: string }
+> = {
   sunday: { ko: "주일예배", en: "SUNDAY" },
   wednesday: { ko: "수요예배", en: "WEDNESDAY" },
   special: { ko: "특별집회", en: "SPECIAL" },

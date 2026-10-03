@@ -33,7 +33,7 @@ const values = [
 export default function ChurchPage() {
   return (
     <>
-      <PageHeader section={MENU[0]} title="교회소개" />
+      <PageHeader section={MENU[0]} title="비전 · 핵심가치" />
 
       <Container className="grid gap-8 py-10 lg:grid-cols-2 lg:items-center lg:gap-16 lg:py-24">
         <PhotoPlaceholder

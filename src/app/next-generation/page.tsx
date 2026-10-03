@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
 
 export default function Page() {
-  redirect("/school/infant");
+  redirect("/next-generation/infant");
 }
