@@ -14,9 +14,11 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
-  title: { default: `${site.name} | ${site.nameEn}`, template: `%s | ${site.name}` },
-  description: `${site.verse.text}. ${site.name}는 ${site.slogan}`,
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+  ),
+  title: { default: `${site.name}`, template: `%s | ${site.name}` },
+  description: `${site.verse.text}. ${site.slogan}`,
   openGraph: { siteName: site.name, locale: "ko_KR", type: "website" },
   appleWebApp: { title: site.name, statusBarStyle: "default" },
 };

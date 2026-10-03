@@ -2,7 +2,14 @@ import { site } from "@/lib/site";
 
 function InstagramIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true" className="size-5">
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      aria-hidden="true"
+      className="size-5"
+    >
       <rect x="3" y="3" width="18" height="18" rx="5" />
       <circle cx="12" cy="12" r="4.2" />
       <circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none" />
@@ -25,8 +32,19 @@ function YouTubeIcon() {
 function BlogIcon() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" className="size-5">
-      <path fill="currentColor" d="M5 3.5h14A2.5 2.5 0 0 1 21.5 6v9a2.5 2.5 0 0 1-2.5 2.5h-4.6L12 20.5l-2.4-3H5A2.5 2.5 0 0 1 2.5 15V6A2.5 2.5 0 0 1 5 3.5Z" />
-      <text x="12" y="13.9" textAnchor="middle" fontSize="7.2" fontWeight="800" fontFamily="system-ui, sans-serif" fill="var(--color-navy)">
+      <path
+        fill="currentColor"
+        d="M5 3.5h14A2.5 2.5 0 0 1 21.5 6v9a2.5 2.5 0 0 1-2.5 2.5h-4.6L12 20.5l-2.4-3H5A2.5 2.5 0 0 1 2.5 15V6A2.5 2.5 0 0 1 5 3.5Z"
+      />
+      <text
+        x="12"
+        y="13.9"
+        textAnchor="middle"
+        fontSize="7.2"
+        fontWeight="800"
+        fontFamily="system-ui, sans-serif"
+        fill="var(--color-navy)"
+      >
         blog
       </text>
     </svg>
@@ -34,8 +52,18 @@ function BlogIcon() {
 }
 
 const LINKS = [
-  { key: "instagram", label: "인스타그램", href: site.sns.instagram, Icon: InstagramIcon },
-  { key: "youtube", label: "유튜브", href: site.sns.youtube, Icon: YouTubeIcon },
+  {
+    key: "instagram",
+    label: "인스타그램",
+    href: site.sns.instagram,
+    Icon: InstagramIcon,
+  },
+  {
+    key: "youtube",
+    label: "유튜브",
+    href: site.sns.youtube,
+    Icon: YouTubeIcon,
+  },
   { key: "blog", label: "블로그", href: site.sns.blog, Icon: BlogIcon },
 ] as const;
 
@@ -43,7 +71,7 @@ const LINKS = [
 export function SocialLinks({ size = "md" }: { size?: "sm" | "md" }) {
   const box = size === "sm" ? "size-9" : "size-11";
   return (
-    <ul className="flex gap-2">
+    <ul className="flex gap-3">
       {LINKS.map(({ key, label, href, Icon }) => (
         <li key={key}>
           {href ? (
