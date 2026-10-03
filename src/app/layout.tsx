@@ -20,6 +20,7 @@ export const metadata: Metadata = {
   title: { default: `${site.name}`, template: `%s | ${site.name}` },
   description: `${site.verse.text}. ${site.slogan}`,
   openGraph: { siteName: site.name, locale: "ko_KR", type: "website" },
+  icons: { icon: [{ url: "/logo.svg", type: "image/svg+xml" }] },
   appleWebApp: { title: site.name, statusBarStyle: "default" },
 };
 

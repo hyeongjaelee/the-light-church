@@ -39,7 +39,7 @@ export const MENU: MenuItem[] = [
     en: "PLANTING",
     ko: "개척 준비 중",
     href: "/planting",
-    sub: [],
+    sub: [], // TODO: 인사말, 모임사진, 모임예정 (강사소개), 비전나눔
   },
   {
     en: "ABOUT",
