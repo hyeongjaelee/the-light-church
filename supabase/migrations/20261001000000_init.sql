@@ -56,7 +56,7 @@ create table public.worship_times (
   day_label text not null,
   time text not null check (time ~ '^\d{2}:\d{2}$'),
   place text,
-  kind text not null default 'worship' check (kind in ('worship', 'school')),
+  kind text not null default 'worship' check (kind in ('worship', 'next-generation')),
   highlight boolean not null default false,
   sort_order int not null default 0
 );
@@ -71,7 +71,7 @@ create table public.staff (
   sort_order int not null default 0
 );
 
--- ---------- 주일학교 부서 ----------
+-- ---------- 다음세대 부서 ----------
 create table public.departments (
   slug text primary key check (slug in ('infant', 'elementary', 'youth')),
   name text not null,

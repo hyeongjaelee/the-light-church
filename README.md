@@ -20,7 +20,7 @@ src/
     page.tsx              홈
     about/                소개: church, people, location, worship
     sermons/              예배와 말씀: sunday, wednesday, special, [id](설교 상세)
-    school/[dept]/        다음세대(N.G.): infant, elementary, youth
+    next-generation/[dept]/        다음세대(N.G.): infant, elementary, youth
     news/bulletin/        교회주보 목록, [id](주보 상세)
     newfamily/            새가족 등록 신청서
   components/
@@ -50,7 +50,9 @@ supabase/
 4. `npm run dev` 를 다시 실행하면 DB 데이터로 화면이 바뀝니다.
 
 ### 관리자 계정 등록 (관리자 페이지를 만든 뒤 사용)
+
 **Authentication → Users** 에서 담당자 계정을 만들고, SQL Editor 에서 등록합니다.
+
 ```sql
 insert into public.admins (user_id)
 select id from auth.users where email = '담당자@이메일.com';
@@ -68,7 +70,7 @@ select id from auth.users where email = '담당자@이메일.com';
 ## 콘텐츠가 바뀌는 주기
 
 - 홈, 설교 목록·상세, 주보 상세: 1분마다 새 데이터 반영
-- 섬기는이들, 예배안내, 주일학교: 5분마다 반영
+- 섬기는이들, 예배안내, 다음세대: 5분마다 반영
 - 주보 목록: 접속할 때마다 반영
 
 ## 남은 작업

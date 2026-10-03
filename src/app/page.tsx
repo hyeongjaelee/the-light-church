@@ -1,5 +1,19 @@
-import { Bulletins, Location, MobileHero, Pastor, School, ThisWeek, Welcome, Worship } from "@/components/home/sections";
-import { getBulletins, getDepartments, getLatestSermon, getWorshipTimes } from "@/lib/data";
+import {
+  Bulletins,
+  Location,
+  MobileHero,
+  Pastor,
+  NextGeneration,
+  ThisWeek,
+  Welcome,
+  Worship,
+} from "@/components/home/sections";
+import {
+  getBulletins,
+  getDepartments,
+  getLatestSermon,
+  getWorshipTimes,
+} from "@/lib/data";
 
 export const revalidate = 60;
 
@@ -18,7 +32,7 @@ export default async function HomePage() {
       <Welcome />
       <Worship times={times} />
       <Pastor />
-      <School departments={departments} />
+      <NextGeneration departments={departments} />
       <Bulletins bulletins={bulletins} />
       <Location />
     </>

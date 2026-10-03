@@ -4,7 +4,7 @@ insert into public.worship_times (name, day_label, time, place, kind, highlight,
   ('주일 1부 예배', '주일', '09:00', '본당', 'worship', false, 1),
   ('주일 2부 예배', '주일', '11:00', '본당', 'worship', true, 2),
   ('수요예배', '수요일', '19:30', '본당', 'worship', false, 3),
-  ('주일학교', '주일', '11:00', '교육관', 'school', false, 4);
+  ('다음세대', '주일', '11:00', '교육관', 'next-generation', false, 4);
 
 insert into public.departments (slug, name, name_en, intro, age_range, time_label, place, sort_order) values
   ('infant', '영아부', 'INFANT', '미취학 아이들이 부모와 함께 하나님의 사랑을 처음 배웁니다.', '0세 ~ 미취학', '주일 오전 11:00', '교육관', 1),

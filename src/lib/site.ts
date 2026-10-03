@@ -7,15 +7,15 @@ export const site = {
   name: "빛으로교회",
   nameEn: "THE LIGHT CHURCH",
   denomination: "대한예수교장로회",
-  pastor: "[성함]",
+  pastor: "심영보",
   address: "경기 성남시 수정구 위례광장로 21-13",
   addressDetail: "힘찬프라자 6층",
-  phone: "[전화번호]",
+  phone: "010-4108-9810",
   email: "[이메일]",
   parking: "[주차 안내 입력 예정]",
   transit: "[대중교통 안내 입력 예정]",
   verse: { ref: "MATTHEW 5:14", text: "너희는 세상의 빛이라" },
-  slogan: "말씀의 빛 안에서 함께 걷는 공동체입니다.",
+  slogan: "예수님으로 가득한 교회",
   sns: {
     instagram: "https://www.instagram.com/thelightchurch_seongnam/",
     youtube: "https://www.youtube.com/@성남빛으로교회",
@@ -36,11 +36,17 @@ export type MenuItem = {
 
 export const MENU: MenuItem[] = [
   {
+    en: "PLANTING",
+    ko: "개척 준비 중",
+    href: "/planting",
+    sub: [], // TODO: 인사말, 모임사진, 모임예정 (강사소개), 비전나눔
+  },
+  {
     en: "ABOUT",
     ko: "소개",
     href: "/about/church",
     sub: [
-      { label: "교회소개", href: "/about/church" },
+      { label: "비전 · 핵심가치", href: "/about/church" },
       { label: "섬기는이들", href: "/about/people" },
       { label: "오시는길", href: "/about/location" },
       { label: "예배안내", href: "/about/worship" },
@@ -57,14 +63,14 @@ export const MENU: MenuItem[] = [
     ],
   },
   {
-    en: "NEW GENERATION",
+    en: "NEXT GENERATION",
     short: "N.G.",
     ko: "다음세대",
-    href: "/school/infant",
+    href: "/next-generation/infant",
     sub: [
-      { label: "영아부", href: "/school/infant" },
-      { label: "초등부", href: "/school/elementary" },
-      { label: "청년부", href: "/school/youth" },
+      { label: "영아부", href: "/next-generation/infant" },
+      { label: "초등부", href: "/next-generation/elementary" },
+      { label: "청년부", href: "/next-generation/youth" },
     ],
   },
   {
