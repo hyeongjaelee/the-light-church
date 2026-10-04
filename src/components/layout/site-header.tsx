@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useState } from "react";
-import { Logo } from "@/components/brand";
+import { LogoAndWordmark } from "@/components/brand";
 import { MENU, sectionOf } from "@/lib/site";
 import { MenuDrawer } from "./menu-drawer";
 
@@ -17,7 +17,7 @@ export function SiteHeader({ times }: { times: string[] }) {
       <header className="sticky top-0 z-40 bg-cream/90 backdrop-blur-md lg:border-b lg:border-line">
         <div className="mx-auto flex max-w-[1440px] items-center justify-between px-4 py-3 lg:px-11 lg:py-5">
           <Link href="/" aria-label="빛으로교회 홈">
-            <Logo className="h-[34px] lg:h-[42px]" />
+            <LogoAndWordmark className="h-[34px] lg:h-[42px]" />
           </Link>
 
           {/* PC: 가로 메뉴 + 드롭다운 */}
@@ -46,7 +46,10 @@ export function SiteHeader({ times }: { times: string[] }) {
                     <ul className="grid min-w-[180px] rounded-[18px] bg-white p-2 shadow-[0_20px_40px_-20px_rgb(22_38_74/0.35),0_0_0_1px_var(--color-line)]">
                       {m.sub.map((s) => (
                         <li key={s.href}>
-                          <Link href={s.href} className="block rounded-xl px-3.5 py-2.5 text-sm hover:bg-cream">
+                          <Link
+                            href={s.href}
+                            className="block rounded-xl px-3.5 py-2.5 text-sm hover:bg-cream"
+                          >
                             {s.label}
                           </Link>
                         </li>

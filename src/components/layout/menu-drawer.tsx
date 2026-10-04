@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { Logo } from "@/components/brand";
+import { LogoAndWordmark } from "@/components/brand";
 import { SocialLinks } from "@/components/social-links";
 import { MENU, site } from "@/lib/site";
 
@@ -42,7 +42,7 @@ export function MenuDrawer({
       <div className="mx-auto flex w-full max-w-[1440px] flex-1 flex-col px-4 pt-3 pb-6 lg:px-11 lg:pt-6 lg:pb-10">
         <div className="flex items-center justify-between">
           <Link href="/" onClick={onClose} aria-label="빛으로교회 홈">
-            <Logo dark className="h-[34px] lg:h-[42px]" />
+            <LogoAndWordmark dark className="h-[34px] lg:h-[42px]" />
           </Link>
           <button
             ref={closeRef}

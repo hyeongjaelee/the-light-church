@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Mark } from "@/components/brand";
+import { Logo } from "@/components/brand";
 import { PageHeader } from "@/components/page-header";
 import { Container, PhotoPlaceholder } from "@/components/ui";
 import { MENU, site } from "@/lib/site";
@@ -84,7 +84,7 @@ export default function ChurchPage() {
 
       <Container className="grid gap-6 py-14 lg:grid-cols-[auto_1fr] lg:items-center lg:gap-16 lg:py-24">
         <div className="grid size-40 place-items-center rounded-[28px] bg-white shadow-card lg:size-56">
-          <Mark className="w-20 lg:w-28" />
+          <Logo className="w-20 lg:w-28" />
         </div>
         <div className="grid gap-3">
           <span className="eyebrow text-brand-blue">SYMBOL</span>
