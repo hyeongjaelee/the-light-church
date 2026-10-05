@@ -59,7 +59,7 @@ export function Paper({
 }) {
   return (
     <div className={`paper ${small ? "paper-sm" : ""} ${className}`}>
-      {!small && <Logo className="absolute top-2.5 right-2 w-3.5" />}
+      {!small && <Logo className="absolute top-2.5 left-2 w-3.5" />}
       <i />
       <i />
       <i />

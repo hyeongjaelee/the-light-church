@@ -15,12 +15,16 @@
   --ease-curtain: cubic-bezier(0.645, 0, 0, 1);
   --ease-bounce: cubic-bezier(0.17, 0.67, 0.3, 1.33);
 
-  --shadow-card: 0 1px 0 var(--color-line), 0 14px 34px -24px rgb(22 38 74 / 0.35);
+  --shadow-card:
+    0 1px 0 var(--color-line), 0 14px 34px -24px rgb(22 38 74 / 0.35);
 }
 
 @theme inline {
-  --font-sans: "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
-  --font-en: var(--font-outfit), "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  --font-sans:
+    "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", "Malgun Gothic",
+    system-ui, sans-serif;
+  --font-en:
+    var(--font-outfit), "Pretendard Variable", Pretendard, system-ui, sans-serif;
 }
 
 /* 영문 오버라인 라벨 (SUNDAY, MATTHEW 5:14 등) */
@@ -91,7 +95,7 @@ h3 {
 }
 .logo-dark {
   color: var(--color-cream);
-  --mk-b: var(--color-sky);
+  --mk-b: #fff;
 }
 
 /* ---------- 원형 버거 버튼 (components 레이어: lg:hidden 같은 유틸리티가 이길 수 있도록) ---------- */
