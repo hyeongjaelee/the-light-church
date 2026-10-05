@@ -1,7 +1,7 @@
+import { LightOn } from "@/components/home/light-on";
 import {
   Bulletins,
   Location,
-  MobileHero,
   Pastor,
   NextGeneration,
   ThisWeek,
@@ -27,9 +27,8 @@ export default async function HomePage() {
 
   return (
     <>
-      <MobileHero />
       <ThisWeek sermon={sermon} />
-      <Welcome />
+      <LightOn />
       <Worship times={times} />
       <Pastor />
       <NextGeneration departments={departments} />
