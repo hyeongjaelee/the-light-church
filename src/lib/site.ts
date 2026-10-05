@@ -16,6 +16,7 @@ export const site = {
   transit: "[대중교통 안내 입력 예정]",
   verse: { ref: "MATTHEW 5:14", text: "너희는 세상의 빛이라" },
   slogan: "예수님으로 가득한 교회",
+  plantingUrl: "https://thelightchurch.netlify.app/", // 첫 화면 '개척에 함께하기' 버튼
   sns: {
     instagram: "https://www.instagram.com/thelightchurch_seongnam/",
     youtube: "https://www.youtube.com/@성남빛으로교회",

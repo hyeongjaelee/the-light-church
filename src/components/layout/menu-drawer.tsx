@@ -39,10 +39,11 @@ export function MenuDrawer({
       aria-hidden={!open}
       inert={!open}
     >
-      <div className="mx-auto flex w-full max-w-[1440px] flex-1 flex-col px-4 pt-3 pb-6 lg:px-11 lg:pt-6 lg:pb-10">
-        <div className="flex items-center justify-between">
+      {/* 맨 윗줄은 SiteHeader 와 같은 폭·여백·높이: 메뉴를 열고 닫아도 로고와 버튼이 제자리에 있도록 */}
+      <div className="mx-auto flex w-full max-w-[1600px] flex-1 flex-col px-5 pb-6 lg:px-12 lg:pb-10">
+        <div className="flex h-16 items-center justify-between lg:h-[72px]">
           <Link href="/" onClick={onClose} aria-label="빛으로교회 홈">
-            <LogoAndWordmark dark className="h-[34px] lg:h-[42px]" />
+            <LogoAndWordmark dark className="h-[34px]" />
           </Link>
           <button
             ref={closeRef}

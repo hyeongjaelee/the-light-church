@@ -162,7 +162,7 @@ function formatPhone(v: string) {
   return `${d.slice(0, 3)}-${d.slice(3, d.length - 4)}-${d.slice(-4)}`;
 }
 
-export function NewFamilyForm() {
+export function NewLightForm() {
   const [form, setForm] = useState(EMPTY);
   const [agreed, setAgreed] = useState(false);
   const [showPolicy, setShowPolicy] = useState(false);

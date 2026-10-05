@@ -7,98 +7,55 @@ import {
   PhotoPlaceholder,
   SectionTitle,
 } from "@/components/ui";
+import { SproutIcon, TreeIcon } from "@/components/icons";
 import { YouTubePlayer } from "@/components/youtube-player";
-import { dotDate, koDate, koTime, shortDate, youtubeUrl } from "@/lib/format";
+import { koDate, koTime, shortDate } from "@/lib/format";
 import { fullAddress, site } from "@/lib/site";
 import type { Bulletin, Department, Sermon, WorshipTime } from "@/lib/types";
 
-/* 모바일 전용 히어로 */
-export function MobileHero() {
-  return (
-    <section className="relative overflow-hidden px-5 pt-4 pb-8 lg:hidden">
-      <span className="eyebrow text-[11px] text-brand-blue">
-        {site.verse.ref}
-      </span>
-      <h1 className="relative mt-2.5 mb-3 text-[34px] leading-[1.22] font-black tracking-[-0.03em]">
-        너희는
-        <br />
-        세상의 <span className="text-brand-blue">빛</span>이라
-      </h1>
-      <p className="relative mb-5 max-w-[24ch] text-sm text-sub">
-        {site.slogan}
-      </p>
-      <div className="relative flex gap-2">
-        <Link href="/about/worship" className={`${btn.primary} ${btn.size}`}>
-          예배 안내
-        </Link>
-        <Link href="/about/location" className={`${btn.outline} ${btn.size}`}>
-          오시는 길
-        </Link>
-      </div>
-    </section>
-  );
-}
-
-/* 이번 주 말씀: 모바일은 카드, 데스크톱은 중앙 제목 + 화면 폭 전체 영상 (영상은 하나만 렌더) */
+/* 첫 화면: 이번 주 설교 영상을 배경으로 채우고 그 위에 고정 문구를 얹음 */
 export function ThisWeek({ sermon }: { sermon: Sermon | null }) {
   if (!sermon) return null;
-  const meta = [dotDate(sermon.preached_on), sermon.scripture, sermon.preacher]
-    .filter(Boolean)
-    .join(" · ");
+  // data-header-overlay: 이 영역 위에서는 헤더가 투명해지고, 음수 margin 으로 헤더 밑까지 영상이 깔림
   return (
-    <section className="border-t border-line lg:border-0">
-      <div className="px-5 pt-6.5 pb-3.5 lg:hidden">
-        <SectionTitle
-          en="This Week"
-          ko="이번 주 말씀"
-          action={{ label: "전체", href: "/sermons/sunday" }}
-        />
-      </div>
-      <div className="hidden justify-items-center gap-2.5 px-11 pt-10 pb-14 text-center lg:grid">
-        <span className="eyebrow text-[13px] text-brand-blue">
-          THIS WEEK · 이번 주 말씀
-        </span>
-        <h1 className="text-[44px] leading-tight font-black tracking-[-0.03em]">
-          {sermon.title}
+    <section
+      data-header-overlay
+      className="relative -mt-16 lg:-mt-[72px] min-h-[100dvh] flex items-center justify-center overflow-hidden text-white px-6 md:px-12 pt-32 pb-28 md:pt-36 md:pb-32"
+    >
+      <YouTubePlayer
+        videoId={sermon.youtube_id}
+        title={sermon.title}
+        mode="background"
+        cover
+      />
+      {/* 글씨가 읽히도록 영상을 어둡게. 아래쪽은 남색으로 이어져 다음 '빛 켜기' 영역과 자연스럽게 연결 */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-navy/35 bg-linear-to-b from-navy/50 via-transparent via-60% to-navy"
+      />
+      <div className="relative grid justify-items-center gap-7 [text-shadow:0_2px_32px_rgb(22_38_74/0.5)] lg:gap-12">
+        <h1 className="break-keep text-[60px] leading-[1.12] font-black tracking-[-0.04em] sm:text-[84px] lg:text-[112px] xl:text-[128px]">
+          예수님으로
+          <br className="sm:hidden" /> 가득한 교회
         </h1>
-        <p className="text-base text-sub">{meta}</p>
-        <div className="mt-3.5 flex gap-2.5">
-          <Link href="/sermons/sunday" className={`${btn.primary} ${btn.size}`}>
-            지난 설교 보기
-          </Link>
+        <div className="flex flex-wrap justify-center gap-2 [text-shadow:none] lg:gap-3">
           <a
-            href={youtubeUrl(sermon.youtube_id)}
+            href={site.plantingUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className={`${btn.outline} ${btn.size}`}
+            className={`group gap-2 ${btn.primary} ${btn.size}`}
           >
-            유튜브에서 보기
+            개척에 함께하기
+            {/* 새싹 → 마우스를 올리면 나무로 자라남 */}
+            <span className="relative size-[1.25em]">
+              <SproutIcon className="absolute inset-0 size-full origin-bottom transition duration-300 group-hover:scale-50 group-hover:opacity-0 group-focus-visible:scale-50 group-focus-visible:opacity-0" />
+              <TreeIcon className="absolute inset-0 size-full origin-bottom scale-50 opacity-0 transition duration-300 group-hover:scale-100 group-hover:opacity-100 group-focus-visible:scale-100 group-focus-visible:opacity-100" />
+            </span>
           </a>
-        </div>
-      </div>
-      <div className="px-5 pb-6.5 lg:p-0">
-        <div className="overflow-hidden rounded-[20px] bg-white shadow-card lg:rounded-none lg:shadow-none">
-          <YouTubePlayer
-            videoId={sermon.youtube_id}
-            title={sermon.title}
-            mode="background"
-          />
-          <Link
-            href={`/sermons/${sermon.id}`}
-            className="grid gap-0.5 px-4 pt-3.5 pb-4 lg:hidden"
-          >
-            <small className="text-xs text-sub">
-              {dotDate(sermon.preached_on)}
-            </small>
-            <b className="text-[17px] tracking-tight">{sermon.title}</b>
-            {(sermon.scripture || sermon.preacher) && (
-              <small className="text-xs text-sub">
-                {[sermon.scripture, sermon.preacher]
-                  .filter(Boolean)
-                  .join(" · ")}
-              </small>
-            )}
-          </Link>
+          {/* TODO: 처음방문 안내 페이지가 생기면 href 연결 */}
+          <a className={`${btn.outlineLight} ${btn.size} cursor-pointer`}>
+            처음 방문
+          </a>
         </div>
       </div>
     </section>

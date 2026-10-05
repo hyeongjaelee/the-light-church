@@ -22,7 +22,7 @@ src/
     sermons/              예배와 말씀: sunday, wednesday, special, [id](설교 상세)
     next-generation/[dept]/        다음세대(N.G.): infant, elementary, youth
     news/bulletin/        교회주보 목록, [id](주보 상세)
-    newfamily/            새가족 등록 신청서
+    new-light/            새가족 등록 신청서
   components/
     layout/               헤더, 커튼 메뉴(drawer), 푸터
     home/sections.tsx     홈 화면 섹션들
