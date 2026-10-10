@@ -22,6 +22,12 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: { default: shareTitle, template: `%s | ${site.name}` },
   description: shareDescription,
+  // 검색엔진 소유 확인 (네이버 서치어드바이저)
+  verification: {
+    other: {
+      "naver-site-verification": "af8c9e93449329ecd3f783de5c56fa17b1141197",
+    },
+  },
   openGraph: {
     title: shareTitle,
     description: shareDescription,
