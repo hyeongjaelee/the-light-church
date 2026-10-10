@@ -38,7 +38,7 @@ export type MenuItem = {
 export const MENU: MenuItem[] = [
   {
     en: "PLANTING",
-    ko: "개척 준비 중",
+    ko: "개척 이야기",
     href: "/planting/greeting",
     sub: [
       { label: "안내", href: "/planting/greeting" },
