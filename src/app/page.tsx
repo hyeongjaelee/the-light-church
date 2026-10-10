@@ -28,11 +28,12 @@ export default async function HomePage() {
   return (
     <>
       <ThisWeek sermon={sermon} />
+      <Welcome />
       <LightOn />
       <Worship times={times} />
-      <Pastor />
-      <NextGeneration departments={departments} />
-      <Bulletins bulletins={bulletins} />
+      {/* <Pastor /> */}
+      {/* <NextGeneration departments={departments} /> */}
+      {/* <Bulletins bulletins={bulletins} /> */}
       <Location />
     </>
   );
