@@ -22,17 +22,30 @@ export default function LocationPage() {
         <div className="grid content-start gap-6">
           <dl className="grid gap-4">
             {rows.map((r) => (
-              <div key={r.label} className="grid gap-0.5 border-b border-line pb-4">
+              <div
+                key={r.label}
+                className="grid gap-0.5 border-b border-line pb-4"
+              >
                 <dt className="text-xs font-bold text-brand-blue">{r.label}</dt>
                 <dd className="text-base">{r.value}</dd>
               </div>
             ))}
           </dl>
           <div className="flex flex-wrap gap-2">
-            <a href={`https://map.naver.com/p/search/${q}`} target="_blank" rel="noopener noreferrer" className={`${btn.primary} ${btn.size}`}>
+            <a
+              href={`https://map.naver.com/p/search/${q}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${btn.outline} ${btn.size}`}
+            >
               네이버 지도
             </a>
-            <a href={`https://map.kakao.com/?q=${q}`} target="_blank" rel="noopener noreferrer" className={`${btn.outline} ${btn.size}`}>
+            <a
+              href={`https://map.kakao.com/?q=${q}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${btn.outline} ${btn.size}`}
+            >
               카카오맵
             </a>
           </div>
