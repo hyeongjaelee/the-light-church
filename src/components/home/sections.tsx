@@ -7,7 +7,7 @@ import {
   PhotoPlaceholder,
   SectionTitle,
 } from "@/components/ui";
-import { SproutIcon, TreeIcon } from "@/components/icons";
+import { SproutIcon, TreeIcon, SparkleIcon } from "@/components/icons";
 import { YouTubePlayer } from "@/components/youtube-player";
 import { koDate, koTime, shortDate } from "@/lib/format";
 import { fullAddress, site } from "@/lib/site";
@@ -48,49 +48,53 @@ export function ThisWeek({ sermon }: { sermon: Sermon | null }) {
             개척에 함께하기
             {/* 새싹 → 마우스를 올리면 나무로 자라남 */}
             <span className="relative size-[1.25em]">
+              {/* <span className="absolute inset-0 size-full origin-bottom transition duration-300 group-hover:scale-50 group-hover:opacity-0 group-focus-visible:scale-50 group-focus-visible:opacity-0">
+                🌱
+              </span>
+              <span className="absolute inset-0 size-full origin-bottom scale-50 opacity-0 transition duration-300 group-hover:scale-100 group-hover:opacity-100 group-focus-visible:scale-100 group-focus-visible:opacity-100">
+                🌳
+              </span> */}
               <SproutIcon className="absolute inset-0 size-full origin-bottom transition duration-300 group-hover:scale-50 group-hover:opacity-0 group-focus-visible:scale-50 group-focus-visible:opacity-0" />
               <TreeIcon className="absolute inset-0 size-full origin-bottom scale-50 opacity-0 transition duration-300 group-hover:scale-100 group-hover:opacity-100 group-focus-visible:scale-100 group-focus-visible:opacity-100" />
             </span>
           </a>
           {/* TODO: 처음방문 안내 페이지가 생기면 href 연결 */}
           <a className={`${btn.outlineLight} ${btn.size} cursor-pointer`}>
-            처음 방문
+            처음 방문 →
           </a>
         </div>
       </div>
     </section>
   );
 }
-
-/* 남색 Welcome 섹션 */
+// ✨ 🙌 🙇🏻‍♂️🙇🏻‍♀️🎉
+/* Welcome: 첫 화면 영상과 '빛 켜기' 사이, 같은 남색 배경으로 이어짐 */
 export function Welcome() {
   return (
-    <section className="bg-navy px-5 py-16 text-center text-cream lg:px-11 lg:pt-[120px] lg:pb-32">
-      <div className="mx-auto grid max-w-[1440px] gap-[110px]">
-        <div className="grid justify-items-center gap-3.5 lg:gap-4.5">
-          <span className="eyebrow text-brand-yellow">WELCOME</span>
-          <h2 className="text-[30px] leading-tight font-black tracking-[-0.035em] lg:text-[52px]">
-            처음 오셔도 괜찮아요
-          </h2>
-          <p className="mb-1.5 text-[15px] text-cream/70 lg:text-[17px]">
-            {site.name}는 언제나 당신을 기다리고 있었습니다.
+    <section className="bg-navy px-5 pt-20 text-center text-cream lg:px-11 lg:pt-32">
+      <div className="mx-auto grid max-w-[1440px] justify-items-center gap-5 lg:gap-8">
+        <h2 className="flex items-center gap-[0.2em] font-en text-[22px] leading-tight font-extrabold tracking-tight lg:text-[44px]">
+          <SparkleIcon className="size-[0.7em] -scale-x-100" />
+          Welcome
+          <SparkleIcon className="size-[0.7em]" />
+        </h2>
+        <div className="grid gap-2 break-keep lg:gap-3">
+          <span>
+            <strong className="text-[36px] font-black tracking-[-0.03em] lg:text-[72px]">
+              빛으로교인
+            </strong>
+            <strong className="text-[18px] leading-relaxed text-cream lg:text-[36px]">
+              은
+            </strong>
+          </span>
+          <p className="text-[18px] leading-relaxed text-cream lg:text-[36px]">
+            <strong>
+              모든 곳에서 예수 그리스도가 나타나게 하는 삶을 살아냅니다
+            </strong>
           </p>
-          <Link
-            href="/about/worship"
-            className={`${btn.outlineLight} ${btn.size}`}
-          >
-            예배 안내 보기
-          </Link>
-        </div>
-        <div className="hidden justify-items-center gap-4.5 lg:grid">
-          <span className="eyebrow text-brand-yellow">{site.verse.ref}</span>
-          <h2 className="text-[52px] leading-tight font-black tracking-[-0.035em]">
-            너희는 세상의 <span className="text-brand-yellow">빛</span>이라
-          </h2>
-          <p className="mb-1.5 text-[17px] text-cream/70">{site.slogan}</p>
-          <Link href="/about/church" className={`${btn.yellow} ${btn.size}`}>
-            교회 소개
-          </Link>
+          <p className="text-[12px] leading-relaxed text-cream/50 lg:text-xl">
+            “빛이 어둠에 비치되, 어둠이 깨닫지 못하더라” (요 1:5)
+          </p>
         </div>
       </div>
     </section>

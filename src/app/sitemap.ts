@@ -11,7 +11,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ]);
   const pages = [
     "/",
-    "/new-light",
+    "/connect",
     ...MENU.flatMap((m) => m.sub.map((s) => s.href)),
   ];
   return [

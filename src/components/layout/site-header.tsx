@@ -98,10 +98,10 @@ export function SiteHeader({ times }: { times: string[] }) {
 
           <div className="flex items-center gap-2 justify-self-end">
             <Link
-              href="/new-light"
+              href="/connect"
               className="inline-flex h-10 items-center rounded-full bg-brand-yellow px-4 font-en text-xs font-bold tracking-wide text-navy transition hover:brightness-95 lg:px-5 lg:text-[13px]"
             >
-              NEW LIGHT
+              CONNECT
             </Link>
             {/* 모바일: 원형 버거 → 커튼 메뉴. 투명 모드에서는 테두리만 있는 원 */}
             <button

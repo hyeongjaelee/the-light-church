@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { btn } from "@/components/ui";
 
@@ -8,6 +9,9 @@ const FULL = 1000; // 이만큼 모이면 배경 빛이 가장 밝아짐
 const POP_MS = 900; // 새 빛이 커졌다가 제자리로 돌아오는 시간
 const BASE_AREA = 560 * 340; // 원본 데모 크기. 이보다 넓으면 빛을 키움
 const TOP_FADE = 100; // 위 영상 영역과 이어지도록 남색으로 흐려지는 높이(px)
+// 아래쪽 문구·버튼 + 그 아래 여백 자리(px). 빛은 여기에 켜지지 않음. 섹션 높이·bottom 여백을 바꾸면 같이 맞출 것
+const BOTTOM_UI = 256;
+const BOTTOM_UI_LG = 288; // lg(1024px) 이상
 
 type Light = { x: number; y: number; r: number; ph: number; born: number };
 
@@ -25,6 +29,13 @@ export function LightOn() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const addRef = useRef<(x?: number, y?: number) => void>(() => {});
   const [count, setCount] = useState(START);
+  const [isButtonClicked, setIsButtonClicked] = useState(false);
+
+  // 초대합니다 버튼
+  const onClick = () => {
+    addRef.current();
+    setIsButtonClicked(true);
+  };
 
   useEffect(() => {
     const box = boxRef.current;
@@ -101,8 +112,10 @@ export function LightOn() {
     };
 
     // 위쪽 페이드 구간과 아래쪽 문구·버튼 자리는 피해서 흩뿌림
-    const randomY = () =>
-      TOP_FADE + Math.random() * Math.max(H - TOP_FADE - 200, 40);
+    const randomY = () => {
+      const bottom = W >= 1024 ? BOTTOM_UI_LG : BOTTOM_UI;
+      return TOP_FADE + Math.random() * Math.max(H - TOP_FADE - bottom, 40);
+    };
     const add = (x: number, y: number, born: number) =>
       lights.push({
         x,
@@ -151,35 +164,47 @@ export function LightOn() {
     <section
       ref={boxRef}
       aria-label="빛 켜기"
-      className="relative h-[480px] overflow-hidden bg-navy text-cream lg:h-[640px]"
+      className="relative h-[536px] overflow-hidden bg-navy text-cream lg:h-[828px]"
     >
       <canvas
         ref={canvasRef}
         aria-hidden
-        onClick={(e) => {
-          const r = e.currentTarget.getBoundingClientRect();
-          addRef.current(e.clientX - r.left, e.clientY - r.top);
-        }}
-        className="absolute inset-0 size-full cursor-pointer"
+        className="absolute inset-0 size-full"
       />
-      <div className="pointer-events-none absolute inset-x-0 bottom-6 grid justify-items-center gap-2.5 px-5 text-center lg:bottom-10 lg:gap-3">
-        <p
-          aria-live="polite"
-          className="text-[22px] font-bold tracking-tight lg:text-[28px]"
-        >
-          <b className="font-en text-brand-yellow tabular-nums">{count + 1}</b>
-          번째 빛인 당신을 초대합니다
-        </p>
-        <button
-          type="button"
-          onClick={() => addRef.current()}
-          className={`pointer-events-auto ${btn.yellow} ${btn.size}`}
-        >
-          환영합니다
-        </button>
-        <p className="text-xs text-cream/50 lg:text-[13px]">
-          화면 아무 곳이나 눌러도 켜져요
-        </p>
+      <div className="pointer-events-none absolute inset-x-0 bottom-20 grid justify-items-center gap-2.5 px-5 text-center lg:bottom-32 lg:gap-3">
+        {isButtonClicked ? (
+          <>
+            <p
+              aria-live="polite"
+              className="text-[20px] font-bold tracking-tight lg:text-[28px]"
+            >
+              <b className="font-en text-brand-yellow tabular-nums">{count}</b>
+              번째 빛의 자리에 당신을 초대합니다!
+            </p>
+            <Link
+              href="/connect"
+              className={`pointer-events-auto ${btn.yellow} ${btn.size}`}
+            >
+              함께하기
+            </Link>
+          </>
+        ) : (
+          <>
+            <p
+              aria-live="polite"
+              className="text-[20px] font-bold tracking-tight lg:text-[28px]"
+            >
+              지금 이 순간에도 우리는 빛으로 살아갑니다
+            </p>
+            <button
+              type="button"
+              onClick={onClick}
+              className={`pointer-events-auto ${btn.yellow} ${btn.size} cursor-pointer`}
+            >
+              초대합니다
+            </button>
+          </>
+        )}
       </div>
     </section>
   );

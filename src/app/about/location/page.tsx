@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { MapPlaceholder } from "@/components/home/sections";
 import { PageHeader } from "@/components/page-header";
 import { btn, Container } from "@/components/ui";
-import { fullAddress, MENU, site } from "@/lib/site";
+import { fullAddress, site } from "@/lib/site";
 
 export const metadata: Metadata = { title: "오시는길" };
 
@@ -16,7 +16,7 @@ export default function LocationPage() {
   ];
   return (
     <>
-      <PageHeader section={MENU[0]} title="오시는길" />
+      <PageHeader path="/about/location" />
       <Container className="grid gap-8 py-10 lg:grid-cols-[1.4fr_1fr] lg:gap-14 lg:py-20">
         <MapPlaceholder />
         <div className="grid content-start gap-6">

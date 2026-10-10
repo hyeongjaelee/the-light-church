@@ -30,3 +30,14 @@ export function TreeIcon({ className }: IconProps) {
     </svg>
   );
 }
+
+// ✨ 빛: 큰 별 하나 + 작은 별 둘. 채워진 아이콘이라 색은 text-* 로 지정 (예: text-brand-yellow)
+export function SparkleIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden className={className}>
+      <path d="M10 5C10.6 10.4 12.6 12.4 18 13C12.6 13.6 10.6 15.6 10 21C9.4 15.6 7.4 13.6 2 13C7.4 12.4 9.4 10.4 10 5Z" />
+      <path d="M19 1.5C19.3 4 20 4.7 22.5 5C20 5.3 19.3 6 19 8.5C18.7 6 18 5.3 15.5 5C18 4.7 18.7 4 19 1.5Z" />
+      <path d="M19.5 16.5C19.7 18.3 20.2 18.8 22 19C20.2 19.2 19.7 19.7 19.5 21.5C19.3 19.7 18.8 19.2 17 19C18.8 18.8 19.3 18.3 19.5 16.5Z" />
+    </svg>
+  );
+}

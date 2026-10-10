@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Logo } from "@/components/brand";
 import { PageHeader } from "@/components/page-header";
 import { Container, PhotoPlaceholder } from "@/components/ui";
-import { MENU, site } from "@/lib/site";
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = { title: "교회소개" };
 
@@ -33,7 +33,7 @@ const values = [
 export default function ChurchPage() {
   return (
     <>
-      <PageHeader section={MENU[0]} title="비전 · 핵심가치" />
+      <PageHeader path="/about/church" />
 
       <Container className="grid gap-8 py-10 lg:grid-cols-2 lg:items-center lg:gap-16 lg:py-24">
         <PhotoPlaceholder
