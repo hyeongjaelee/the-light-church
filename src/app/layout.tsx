@@ -4,7 +4,7 @@ import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { getWorshipTimes } from "@/lib/data";
 import { koTime } from "@/lib/format";
-import { site } from "@/lib/site";
+import { site, siteUrl } from "@/lib/site";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -19,9 +19,7 @@ const shareDescription = `${site.slogan}. 모든 곳에서 예수 그리스도�
 
 export const metadata: Metadata = {
   // og:image 같은 절대 주소의 기준. 비어 있으면 실제 도메인으로 (localhost 로 나가면 카톡이 이미지를 못 가져옴)
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://thelightchurch.or.kr",
-  ),
+  metadataBase: new URL(siteUrl),
   title: { default: shareTitle, template: `%s | ${site.name}` },
   description: shareDescription,
   openGraph: {

@@ -2,6 +2,10 @@
 export const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 export const asset = (path: string) => `${basePath}${path}`;
 
+// 사이트 절대 주소 (카카오톡·검색 미리보기, sitemap, robots). 환경변수가 없으면 실제 도메인
+export const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://thelightchurch.or.kr";
+
 // 교회 기본 정보. [대괄호] 항목은 확인 후 채워야 하는 자리입니다.
 export const site = {
   name: "빛으로교회",
