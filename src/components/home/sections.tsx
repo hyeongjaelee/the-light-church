@@ -113,11 +113,7 @@ export function Worship({ times }: { times: WorshipTime[] }) {
   return (
     <section>
       <Container className="grid gap-3.5 py-6.5 lg:gap-9 lg:py-[100px]">
-        <SectionTitle
-          en="Worship"
-          ko="예배 안내"
-          description="모든 예배는 누구에게나 열려 있습니다. 편한 시간에 함께해 주세요."
-        />
+        <SectionTitle en="Worship" ko="예배 안내" />
         <div className="grid rounded-[20px] bg-white px-4 py-1 shadow-[0_1px_0_var(--color-line)] lg:hidden">
           {times.map((t) => (
             <div
@@ -171,8 +167,8 @@ export function Worship({ times }: { times: WorshipTime[] }) {
 /* 담임목사 소개 */
 export function Pastor() {
   return (
-    <section className="bg-navy p-5 lg:p-11">
-      <div className="mx-auto grid max-w-[1352px] overflow-hidden rounded-[22px] bg-cream lg:grid-cols-2">
+    <section className="p-5 lg:p-11">
+      <div className="mx-auto grid max-w-[1352px] overflow-hidden rounded-[22px] bg-white shadow-card ring-1 ring-line lg:grid-cols-2">
         <PhotoPlaceholder label="담임목사 사진" className="aspect-[4/3]" />
         <div className="grid content-center gap-3.5 p-7 lg:p-14">
           <span className="eyebrow text-brand-blue">OUR PASTOR</span>
@@ -309,7 +305,7 @@ export function Bulletins({ bulletins }: { bulletins: Bulletin[] }) {
 /* 오시는 길 요약 */
 export function Location() {
   return (
-    <section className="border-t border-line">
+    <section>
       <Container className="grid gap-3.5 py-6.5 lg:grid-cols-[1fr_1.4fr] lg:items-center lg:gap-12 lg:py-[100px]">
         <div className="grid gap-3.5 lg:gap-5">
           <SectionTitle en="Location" ko="오시는 길" />

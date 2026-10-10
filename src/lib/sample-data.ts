@@ -142,7 +142,7 @@ export const sampleStaff: Staff[] = [
   {
     id: "st2",
     name: "[성함]",
-    role: "부목사",
+    role: "전도사",
     photo_url: null,
     bio: null,
     sort_order: 2,
@@ -150,7 +150,7 @@ export const sampleStaff: Staff[] = [
   {
     id: "st3",
     name: "[성함]",
-    role: "교육전도사",
+    role: "전도사",
     photo_url: null,
     bio: null,
     sort_order: 3,
@@ -158,10 +158,18 @@ export const sampleStaff: Staff[] = [
   {
     id: "st4",
     name: "[성함]",
-    role: "장로",
+    role: "간사",
     photo_url: null,
     bio: null,
     sort_order: 4,
+  },
+  {
+    id: "st5",
+    name: "[성함]",
+    role: "간사",
+    photo_url: null,
+    bio: null,
+    sort_order: 5,
   },
 ];
 

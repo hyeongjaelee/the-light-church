@@ -30,8 +30,8 @@ export default async function HomePage() {
       <ThisWeek sermon={sermon} />
       <Welcome />
       <LightOn />
+      <Pastor />
       <Worship times={times} />
-      {/* <Pastor /> */}
       {/* <NextGeneration departments={departments} /> */}
       {/* <Bulletins bulletins={bulletins} /> */}
       <Location />
