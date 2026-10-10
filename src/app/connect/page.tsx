@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { NewLightForm } from "@/components/new-light-form";
+import { ConnectForm } from "@/components/connect-form";
 import { Container } from "@/components/ui";
 import { fullAddress, site } from "@/lib/site";
 
@@ -27,13 +27,13 @@ const steps = [
   },
 ];
 
-export default function NewLightPage() {
+export default function ConnectPage() {
   return (
     <div className="pb-16 lg:pb-28">
       <Container className="grid gap-10 pt-6 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-16 lg:pt-16">
         <aside className="grid content-start gap-8 lg:sticky lg:top-32 lg:self-start">
           <div className="grid gap-4">
-            <span className="eyebrow text-brand-blue">NEW LIGHT</span>
+            <span className="eyebrow text-brand-blue">CONNECT</span>
             <h1 className="text-[32px] leading-[1.25] font-black tracking-[-0.03em] lg:text-5xl">
               {site.name}에
               <br />
@@ -71,7 +71,7 @@ export default function NewLightPage() {
           </dl>
         </aside>
 
-        <NewLightForm />
+        <ConnectForm />
       </Container>
     </div>
   );
