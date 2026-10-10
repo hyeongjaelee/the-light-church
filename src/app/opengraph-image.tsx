@@ -7,6 +7,8 @@ import { site } from "@/lib/site";
 export const alt = `${site.name} ${site.nameEn}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
+// GitHub Pages 정적 배포(output: export)에서는 빌드 때 한 번 만들어 두어야 함
+export const dynamic = "force-static";
 
 export default async function Image() {
   const logo = await readFile(join(process.cwd(), "public/logo.svg"));
