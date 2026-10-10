@@ -13,13 +13,24 @@ const outfit = Outfit({
   weight: ["500", "600", "700", "800"],
 });
 
+// 카카오톡 등 링크 공유 미리보기 문구
+const shareTitle = `${site.name} · ${site.nameEn}`;
+const shareDescription = `${site.slogan}. 모든 곳에서 예수 그리스도가 나타나게 하라`;
+
 export const metadata: Metadata = {
+  // og:image 같은 절대 주소의 기준. 비어 있으면 실제 도메인으로 (localhost 로 나가면 카톡이 이미지를 못 가져옴)
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://thelightchurch.or.kr",
   ),
-  title: { default: `${site.name}`, template: `%s | ${site.name}` },
-  description: `${site.verse.text}. ${site.slogan}`,
-  openGraph: { siteName: site.name, locale: "ko_KR", type: "website" },
+  title: { default: shareTitle, template: `%s | ${site.name}` },
+  description: shareDescription,
+  openGraph: {
+    title: shareTitle,
+    description: shareDescription,
+    siteName: site.name,
+    locale: "ko_KR",
+    type: "website",
+  },
   icons: { icon: [{ url: "/logo.svg", type: "image/svg+xml" }] },
   appleWebApp: { title: site.name, statusBarStyle: "default" },
 };
