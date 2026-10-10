@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import { PageHeader } from "@/components/page-header";
 import { Container, PhotoPlaceholder } from "@/components/ui";
 import { getDepartment } from "@/lib/data";
-import { MENU } from "@/lib/site";
 import type { DepartmentSlug } from "@/lib/types";
 
 const SLUGS: DepartmentSlug[] = ["infant", "elementary", "youth"];
@@ -39,7 +38,7 @@ export default async function DepartmentPage({
 
   return (
     <>
-      <PageHeader section={MENU[2]} title={d.name} />
+      <PageHeader path={`/next-generation/${dept}`} />
       <Container className="grid gap-8 py-10 lg:grid-cols-2 lg:items-center lg:gap-16 lg:py-20">
         {d.photo_url ? (
           <Image

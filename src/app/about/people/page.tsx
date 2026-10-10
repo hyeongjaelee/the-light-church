@@ -3,7 +3,6 @@ import Image from "next/image";
 import { PageHeader } from "@/components/page-header";
 import { Container, PhotoPlaceholder } from "@/components/ui";
 import { getStaff } from "@/lib/data";
-import { MENU } from "@/lib/site";
 
 export const metadata: Metadata = { title: "섬기는이들" };
 export const revalidate = 300;
@@ -12,7 +11,7 @@ export default async function PeoplePage() {
   const staff = await getStaff();
   return (
     <>
-      <PageHeader section={MENU[0]} title="섬기는이들" description="빛으로교회를 함께 섬기는 분들을 소개합니다." />
+      <PageHeader path="/about/people" description="빛으로교회를 함께 섬기는 분들을 소개합니다." />
       <Container className="grid grid-cols-2 gap-3 py-10 sm:grid-cols-3 lg:grid-cols-4 lg:gap-6 lg:py-20">
         {staff.map((p) => (
           <article key={p.id} className="overflow-hidden rounded-[22px] bg-white shadow-card">

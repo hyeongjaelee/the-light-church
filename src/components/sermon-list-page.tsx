@@ -4,7 +4,6 @@ import { PageHeader } from "@/components/page-header";
 import { Container } from "@/components/ui";
 import { getSermons } from "@/lib/data";
 import { dotDate, youtubeThumb } from "@/lib/format";
-import { MENU } from "@/lib/site";
 import { SERMON_CATEGORIES, type SermonCategory } from "@/lib/types";
 
 export async function SermonListPage({ category }: { category: SermonCategory }) {
@@ -13,7 +12,7 @@ export async function SermonListPage({ category }: { category: SermonCategory })
 
   return (
     <>
-      <PageHeader section={MENU[1]} title={ko} />
+      <PageHeader path={`/sermons/${category}`} />
       <Container className="py-10 lg:py-20">
         {sermons.length === 0 ? (
           <p className="rounded-[22px] bg-white p-10 text-center text-sub shadow-card">아직 등록된 {ko} 영상이 없습니다.</p>

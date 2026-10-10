@@ -3,7 +3,6 @@ import { PageHeader } from "@/components/page-header";
 import { Container } from "@/components/ui";
 import { getDepartments, getWorshipTimes } from "@/lib/data";
 import { koTime } from "@/lib/format";
-import { MENU } from "@/lib/site";
 
 export const metadata: Metadata = { title: "예배안내" };
 export const revalidate = 300;
@@ -18,8 +17,7 @@ export default async function WorshipPage() {
   return (
     <>
       <PageHeader
-        section={MENU[0]}
-        title="예배안내"
+        path="/about/worship"
         description="모든 예배는 누구에게나 열려 있습니다. 처음 오신 분도 편하게 함께해 주세요."
       />
       <Container className="grid gap-12 py-10 lg:gap-20 lg:py-20">
