@@ -39,35 +39,31 @@ export function ThisWeek({ sermon }: { sermon: Sermon | null }) {
           <br className="sm:hidden" /> 가득한 교회
         </h1>
         <div className="flex flex-wrap justify-center gap-2 [text-shadow:none] lg:gap-3">
-          <a
+          {/* TODO: 개척 완료 후, 이번주 설교 보기 버튼으로 변경 */}
+          {/* <a
             href={site.plantingUrl}
             target="_blank"
             rel="noopener noreferrer"
             className={`group gap-2 ${btn.primary} ${btn.size}`}
           >
             개척에 함께하기
-            {/* 새싹 → 마우스를 올리면 나무로 자라남 */}
             <span className="relative size-[1.25em]">
-              {/* <span className="absolute inset-0 size-full origin-bottom transition duration-300 group-hover:scale-50 group-hover:opacity-0 group-focus-visible:scale-50 group-focus-visible:opacity-0">
-                🌱
-              </span>
-              <span className="absolute inset-0 size-full origin-bottom scale-50 opacity-0 transition duration-300 group-hover:scale-100 group-hover:opacity-100 group-focus-visible:scale-100 group-focus-visible:opacity-100">
-                🌳
-              </span> */}
               <SproutIcon className="absolute inset-0 size-full origin-bottom transition duration-300 group-hover:scale-50 group-hover:opacity-0 group-focus-visible:scale-50 group-focus-visible:opacity-0" />
               <TreeIcon className="absolute inset-0 size-full origin-bottom scale-50 opacity-0 transition duration-300 group-hover:scale-100 group-hover:opacity-100 group-focus-visible:scale-100 group-focus-visible:opacity-100" />
             </span>
-          </a>
-          {/* TODO: 처음방문 안내 페이지가 생기면 href 연결 */}
-          <a className={`${btn.outlineLight} ${btn.size} cursor-pointer`}>
-            처음 방문 →
-          </a>
+          </a> */}
+          <Link
+            href="/planting/greeting"
+            className={`${btn.outlineLight} ${btn.size} ring-2! hover:bg-cream! hover:text-navy! hover:ring-cream!`}
+          >
+            개척 이야기 둘러보기 →
+          </Link>
         </div>
       </div>
     </section>
   );
 }
-// ✨ 🙌 🙇🏻‍♂️🙇🏻‍♀️🎉
+
 /* Welcome: 첫 화면 영상과 '빛 켜기' 사이, 같은 남색 배경으로 이어짐 */
 export function Welcome() {
   return (

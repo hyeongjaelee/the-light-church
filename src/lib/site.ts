@@ -39,8 +39,13 @@ export const MENU: MenuItem[] = [
   {
     en: "PLANTING",
     ko: "개척 준비 중",
-    href: "/planting",
-    sub: [], // TODO: 인사말, 모임사진, 모임예정 (강사소개), 비전나눔
+    href: "/planting/greeting",
+    sub: [
+      { label: "안내", href: "/planting/greeting" },
+      { label: "모임사진", href: "/planting/photos" },
+      { label: "모임예정", href: "/planting/meetings" },
+      { label: "비전나눔", href: "/planting/vision-sharing" },
+    ],
   },
   {
     en: "ABOUT",

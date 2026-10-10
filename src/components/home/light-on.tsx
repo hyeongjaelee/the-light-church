@@ -183,7 +183,7 @@ export function LightOn() {
             </p>
             <Link
               href="/connect"
-              className={`pointer-events-auto ${btn.yellow} ${btn.size}`}
+              className={`pointer-events-auto ${btn.light} ${btn.size}`}
             >
               함께하기
             </Link>
@@ -199,7 +199,7 @@ export function LightOn() {
             <button
               type="button"
               onClick={onClick}
-              className={`pointer-events-auto ${btn.yellow} ${btn.size} cursor-pointer`}
+              className={`pointer-events-auto ${btn.light} ${btn.size} cursor-pointer`}
             >
               초대합니다
             </button>

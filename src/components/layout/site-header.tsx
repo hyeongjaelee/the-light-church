@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { btn } from "@/components/ui";
 import { LogoAndWordmark } from "@/components/brand";
 import { MENU, sectionOf } from "@/lib/site";
 import { MenuDrawer } from "./menu-drawer";
@@ -99,7 +100,7 @@ export function SiteHeader({ times }: { times: string[] }) {
           <div className="flex items-center gap-2 justify-self-end">
             <Link
               href="/connect"
-              className="inline-flex h-10 items-center rounded-full bg-brand-yellow px-4 font-en text-xs font-bold tracking-wide text-navy transition hover:brightness-95 lg:px-5 lg:text-[13px]"
+              className={`${btn.light} inline-flex h-10 px-4 font-en text-xs lg:px-5 lg:text-[13px]`}
             >
               CONNECT
             </Link>
