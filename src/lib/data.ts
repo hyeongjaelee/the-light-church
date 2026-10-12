@@ -6,19 +6,34 @@ import {
   sampleStaff,
   sampleWorshipTimes,
 } from "./sample-data";
-import type { Bulletin, Department, DepartmentSlug, Sermon, SermonCategory, Staff, WorshipTime } from "./types";
+import type {
+  Bulletin,
+  Department,
+  DepartmentSlug,
+  Sermon,
+  SermonCategory,
+  Staff,
+  WorshipTime,
+} from "./types";
 
 function fail(what: string, error: { message: string }) {
   console.error(`[supabase] ${what} 조회 실패: ${error.message}`);
 }
 
-export async function getSermons(category?: SermonCategory, limit = 24): Promise<Sermon[]> {
+export async function getSermons(
+  category?: SermonCategory,
+  limit = 24,
+): Promise<Sermon[]> {
   if (!supabase) {
-    return sampleSermons.filter((s) => !category || s.category === category).slice(0, limit);
+    return sampleSermons
+      .filter((s) => !category || s.category === category)
+      .slice(0, limit);
   }
   let query = supabase
     .from("sermons")
-    .select("id, category, title, preacher, scripture, preached_on, youtube_id, summary")
+    .select(
+      "id, category, title, preacher, scripture, preached_on, youtube_id, summary",
+    )
     .eq("published", true)
     .order("preached_on", { ascending: false })
     .limit(limit);
@@ -29,7 +44,9 @@ export async function getSermons(category?: SermonCategory, limit = 24): Promise
 }
 
 export async function getLatestSermon(): Promise<Sermon | null> {
-  const [latest] = await getSermons("sunday", 1);
+  // TODO: 개척 후에는 카테고리가 sunday인 설교를 가져오도록 변경
+  // const [latest] = await getSermons("sunday", 1);
+  const [latest] = await getSermons("planting", 1);
   return latest ?? null;
 }
 
@@ -37,7 +54,9 @@ export async function getSermon(id: string): Promise<Sermon | null> {
   if (!supabase) return sampleSermons.find((s) => s.id === id) ?? null;
   const { data, error } = await supabase
     .from("sermons")
-    .select("id, category, title, preacher, scripture, preached_on, youtube_id, summary")
+    .select(
+      "id, category, title, preacher, scripture, preached_on, youtube_id, summary",
+    )
     .eq("id", id)
     .eq("published", true)
     .maybeSingle();
@@ -45,9 +64,14 @@ export async function getSermon(id: string): Promise<Sermon | null> {
   return data;
 }
 
-export async function getBulletins(year?: number, limit = 60): Promise<Bulletin[]> {
+export async function getBulletins(
+  year?: number,
+  limit = 60,
+): Promise<Bulletin[]> {
   if (!supabase) {
-    return sampleBulletins.filter((b) => !year || b.sunday_date.startsWith(String(year))).slice(0, limit);
+    return sampleBulletins
+      .filter((b) => !year || b.sunday_date.startsWith(String(year)))
+      .slice(0, limit);
   }
   let query = supabase
     .from("bulletins")
@@ -55,7 +79,10 @@ export async function getBulletins(year?: number, limit = 60): Promise<Bulletin[
     .eq("published", true)
     .order("sunday_date", { ascending: false })
     .limit(limit);
-  if (year) query = query.gte("sunday_date", `${year}-01-01`).lte("sunday_date", `${year}-12-31`);
+  if (year)
+    query = query
+      .gte("sunday_date", `${year}-01-01`)
+      .lte("sunday_date", `${year}-12-31`);
   const { data, error } = await query;
   if (error) fail("주보", error);
   return data ?? [];
@@ -97,13 +124,17 @@ export async function getDepartments(): Promise<Department[]> {
   if (!supabase) return sampleDepartments;
   const { data, error } = await supabase
     .from("departments")
-    .select("slug, name, name_en, intro, age_range, time_label, place, photo_url, sort_order")
+    .select(
+      "slug, name, name_en, intro, age_range, time_label, place, photo_url, sort_order",
+    )
     .order("sort_order");
   if (error) fail("다음세대", error);
   return data ?? [];
 }
 
-export async function getDepartment(slug: DepartmentSlug): Promise<Department | null> {
+export async function getDepartment(
+  slug: DepartmentSlug,
+): Promise<Department | null> {
   const all = await getDepartments();
   return all.find((d) => d.slug === slug) ?? null;
 }

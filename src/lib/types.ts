@@ -1,4 +1,4 @@
-export type SermonCategory = "sunday" | "wednesday" | "special";
+export type SermonCategory = "sunday" | "wednesday" | "special" | "planting";
 
 export type Sermon = {
   id: string;
@@ -56,9 +56,11 @@ export type Department = {
 
 export const SERMON_CATEGORIES: Record<
   SermonCategory,
-  { ko: string; en: string }
+  /** href: 목록 화면 경로 */
+  { ko: string; en: string; href: string }
 > = {
-  sunday: { ko: "주일예배", en: "SUNDAY" },
-  wednesday: { ko: "수요예배", en: "WEDNESDAY" },
-  special: { ko: "특별집회", en: "SPECIAL" },
+  sunday: { ko: "주일예배", en: "SUNDAY", href: "/sermons/sunday" },
+  wednesday: { ko: "수요예배", en: "WEDNESDAY", href: "/sermons/wednesday" },
+  special: { ko: "특별집회", en: "SPECIAL", href: "/sermons/special" },
+  planting: { ko: "개척 영상", en: "PLANTING", href: "/planting/videos" },
 };

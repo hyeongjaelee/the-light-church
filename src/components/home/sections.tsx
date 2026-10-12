@@ -7,7 +7,12 @@ import {
   PhotoPlaceholder,
   SectionTitle,
 } from "@/components/ui";
-import { SproutIcon, TreeIcon, SparkleIcon } from "@/components/icons";
+import {
+  FootprintsIcon,
+  SproutIcon,
+  TreeIcon,
+  SparkleIcon,
+} from "@/components/icons";
 import { YouTubePlayer } from "@/components/youtube-player";
 import { koDate, koTime, shortDate } from "@/lib/format";
 import { fullAddress, site } from "@/lib/site";
@@ -52,11 +57,27 @@ export function ThisWeek({ sermon }: { sermon: Sermon | null }) {
               <TreeIcon className="absolute inset-0 size-full origin-bottom scale-50 opacity-0 transition duration-300 group-hover:scale-100 group-hover:opacity-100 group-focus-visible:scale-100 group-focus-visible:opacity-100" />
             </span>
           </a> */}
+          {/* 배경으로 나오는 이번 주 설교의 상세 화면 */}
           <Link
             href="/planting/greeting"
-            className={`${btn.outlineLight} ${btn.size} ring-2! hover:bg-cream! hover:text-navy! hover:ring-cream!`}
+            className={`group gap-2 ${btn.primary} ${btn.size}`}
           >
-            개척 이야기 둘러보기 →
+            개척 이야기 둘러보기
+            <FootprintsIcon className="size-[1.2em] motion-safe:group-hover:[&_.foot-l]:animate-step-down motion-safe:group-hover:[&_.foot-r]:animate-step-up" />
+          </Link>
+          <Link
+            href={`/sermons/${sermon.id}`}
+            className={`gap-2 ${btn.outlineLight} ${btn.size} ring-2! hover:bg-cream! hover:text-navy! hover:ring-cream!`}
+          >
+            <span
+              aria-hidden
+              className="grid size-6 flex-none place-items-center rounded-full bg-navy"
+            >
+              <svg viewBox="0 0 10 10" className="ml-0.5 size-2.5 fill-cream">
+                <path d="M1 0v10l9-5z" />
+              </svg>
+            </span>
+            영상 보기
           </Link>
         </div>
       </div>
@@ -160,24 +181,20 @@ export function Worship({ times }: { times: WorshipTime[] }) {
   );
 }
 
-/* 담임목사 소개 */
-export function Pastor() {
+/* 섬기는이들 소개 */
+export function Leadership() {
   return (
     <section className="p-5 lg:p-11">
       <div className="mx-auto grid max-w-[1352px] overflow-hidden rounded-[22px] bg-white shadow-card ring-1 ring-line lg:grid-cols-2">
-        <PhotoPlaceholder label="담임목사 사진" className="aspect-[4/3]" />
+        <PhotoPlaceholder label="섬기는이들 사진" className="aspect-[4/3]" />
         <div className="grid content-center gap-3.5 p-7 lg:p-14">
-          <span className="eyebrow text-brand-blue">OUR PASTOR</span>
+          <span className="eyebrow text-brand-blue">Leadership</span>
           <h2 className="text-2xl leading-snug font-black tracking-[-0.03em] lg:text-[34px]">
-            함께 말씀의 빛 안에서
-            <br />
-            걸어가길 소망합니다
+            [섬기는이들의 한마디]
           </h2>
           <p className="max-w-[36ch] text-[15px] leading-relaxed text-sub lg:text-base">
-            [담임목사 인사말이 들어갈 자리] 하나님이 당신을 위해 지으신 삶을{" "}
-            {site.name}에서 함께 발견하길 바랍니다.
+            [말씀구절]
           </p>
-          <span className="font-bold">담임목사 {site.pastor}</span>
         </div>
       </div>
     </section>
