@@ -33,7 +33,7 @@ export default async function SermonPage({ params }: PageProps<"/sermons/[id]">)
 
   return (
     <Container className="grid max-w-[1100px] gap-6 py-6 lg:gap-10 lg:py-14">
-      <Link href={`/sermons/${sermon.category}`} className="w-fit text-sm text-sub hover:text-ink">
+      <Link href={cat.href} className="w-fit text-sm text-sub hover:text-ink">
         ← {cat.ko} 목록
       </Link>
       <div className="grid gap-2">
@@ -45,7 +45,7 @@ export default async function SermonPage({ params }: PageProps<"/sermons/[id]">)
           <p className="text-sub lg:text-lg">{[sermon.scripture, sermon.preacher].filter(Boolean).join(" · ")}</p>
         )}
       </div>
-      <YouTubePlayer videoId={sermon.youtube_id} title={sermon.title} className="rounded-[18px] lg:rounded-[22px]" />
+      <YouTubePlayer videoId={sermon.youtube_id} title={sermon.title} className="rounded-[18px] shadow-[0_2px_6px_rgb(22_38_74/0.12),0_16px_32px_-16px_rgb(22_38_74/0.5)] lg:rounded-[22px]" />
       {sermon.summary && <p className="max-w-[65ch] leading-relaxed whitespace-pre-line text-ink/85 lg:text-lg">{sermon.summary}</p>}
       <a href={youtubeUrl(sermon.youtube_id)} target="_blank" rel="noopener noreferrer" className="w-fit text-sm font-bold text-navy">
         유튜브에서 보기 →

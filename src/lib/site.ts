@@ -45,6 +45,7 @@ export const MENU: MenuItem[] = [
     href: "/planting/greeting",
     sub: [
       { label: "안내", href: "/planting/greeting" },
+      { label: "영상", href: "/planting/videos" },
       { label: "모임사진", href: "/planting/photos" },
       { label: "모임예정", href: "/planting/meetings" },
       { label: "비전나눔", href: "/planting/vision-sharing" },

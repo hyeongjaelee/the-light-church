@@ -14,6 +14,20 @@
   --ease-curtain: cubic-bezier(0.645, 0, 0, 1);
   --ease-bounce: cubic-bezier(0.17, 0.67, 0.3, 1.33);
 
+  /* 발자국 걷기: 왼발은 내려가고 오른발은 올라오며 번갈아 반복 */
+  --animate-step-down: step-down 0.45s ease-in-out infinite alternate;
+  --animate-step-up: step-up 0.45s ease-in-out infinite alternate;
+  @keyframes step-down {
+    to {
+      transform: translateY(4px);
+    }
+  }
+  @keyframes step-up {
+    to {
+      transform: translateY(-4px);
+    }
+  }
+
   --shadow-card:
     0 1px 0 var(--color-line), 0 14px 34px -24px rgb(22 38 74 / 0.35);
 }
