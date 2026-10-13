@@ -2,7 +2,7 @@ import { LightOn } from "@/components/home/light-on";
 import {
   Bulletins,
   Location,
-  Leadership,
+  Pastor,
   NextGeneration,
   ThisWeek,
   Welcome,
@@ -30,7 +30,7 @@ export default async function HomePage() {
       <ThisWeek sermon={sermon} />
       <Welcome />
       <LightOn />
-      <Leadership />
+      <Pastor />
       <Worship times={times} />
       {/* <NextGeneration departments={departments} /> */}
       {/* <Bulletins bulletins={bulletins} /> */}

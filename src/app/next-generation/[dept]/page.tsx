@@ -4,15 +4,14 @@ import { notFound } from "next/navigation";
 import { PageHeader } from "@/components/page-header";
 import { Container, PhotoPlaceholder } from "@/components/ui";
 import { getDepartment } from "@/lib/data";
-import type { DepartmentSlug } from "@/lib/types";
-
-const SLUGS: DepartmentSlug[] = ["infant", "elementary", "youth"];
+import { site } from "@/lib/site";
+import { DEPARTMENT_SLUGS, type DepartmentSlug } from "@/lib/types";
 
 export const revalidate = 300;
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return SLUGS.map((dept) => ({ dept }));
+  return DEPARTMENT_SLUGS.map((dept) => ({ dept }));
 }
 
 export async function generateMetadata({
@@ -20,7 +19,7 @@ export async function generateMetadata({
 }: PageProps<"/next-generation/[dept]">): Promise<Metadata> {
   const { dept } = await params;
   const d = await getDepartment(dept as DepartmentSlug);
-  return d ? { title: d.name, description: d.intro } : {};
+  return d ? { title: `${d.menu_name} (${d.name})`, description: d.intro } : {};
 }
 
 export default async function DepartmentPage({
@@ -55,8 +54,10 @@ export default async function DepartmentPage({
           />
         )}
         <div className="grid gap-5">
-          <span className="eyebrow text-brand-blue">{d.name_en}</span>
-          <h2 className="text-2xl leading-snug font-black tracking-tight lg:text-4xl">
+          <span className="eyebrow text-brand-blue">
+            {d.name_en} · {d.name}
+          </span>
+          <h2 className="text-xl leading-snug font-black [text-wrap:auto]! lg:text-[28px]">
             {d.intro}
           </h2>
           <dl className="grid gap-3 rounded-[22px] bg-white p-5 shadow-card lg:p-6">
@@ -70,6 +71,12 @@ export default async function DepartmentPage({
               </div>
             ))}
           </dl>
+          {/* 청년부를 뺀 어린이·청소년 부서에만 부모님 안내 */}
+          {d.slug !== "youth" && (
+            <p className="rounded-[18px] bg-brand-yellow/20 px-5 py-4 text-sm leading-relaxed lg:text-[15px]">
+              <b className="mr-1.5 text-navy">부모님께：</b> {site.parentNote}
+            </p>
+          )}
         </div>
       </Container>
     </>

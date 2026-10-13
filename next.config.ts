@@ -5,6 +5,8 @@ const isPages = process.env.GITHUB_PAGES === "true";
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 const nextConfig: NextConfig = {
+  // 폰에서 개발 서버(LAN IP)에 접속하면 Next가 클라이언트 JS를 막아 메뉴 버튼이 동작하지 않는다.
+  allowedDevOrigins: ["192.168.45.224", "192.168.*.*"],
   ...(isPages && { output: "export", trailingSlash: true }),
   basePath: basePath || undefined,
   images: {

@@ -6,10 +6,7 @@ insert into public.worship_times (name, day_label, time, place, kind, highlight,
   ('수요예배', '수요일', '19:30', '본당', 'worship', false, 3),
   ('다음세대', '주일', '11:00', '교육관', 'next-generation', false, 4);
 
-insert into public.departments (slug, name, name_en, intro, age_range, time_label, place, sort_order) values
-  ('infant', '영아부', 'INFANT', '미취학 아이들이 부모와 함께 하나님의 사랑을 처음 배웁니다.', '0세 ~ 미취학', '주일 오전 11:00', '교육관', 1),
-  ('elementary', '초등부', 'KIDS', '매주 주일, 말씀과 찬양으로 아이들 스스로 믿음을 세워갑니다.', '초등학교 1 ~ 6학년', '주일 오전 11:00', '교육관', 2),
-  ('youth', '청년부', 'YOUTH', '삶과 신앙을 나누며 함께 기도하는 청년 공동체입니다.', '20 ~ 30대', '주일 오후 2:00', '본당', 3);
+-- 다음세대 부서는 migrations/20261014010000_departments_v2.sql 에서 넣습니다.
 
 insert into public.staff (name, role, sort_order) values
   ('[성함]', '담임목사', 1),

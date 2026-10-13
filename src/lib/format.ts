@@ -15,11 +15,30 @@ export function koDate(iso: string) {
 }
 
 // "19:30" → "오후 7:30"
-export function koTime(hhmm: string) {
+// 예배 시간은 "09:30" 또는 여러 번이면 "09:30 / 11:30"
+export function splitTimes(time: string) {
+  return time.split("/").map((t) => t.trim());
+}
+
+function koTimeOne(hhmm: string) {
   const [h, m] = hhmm.split(":").map(Number);
   const period = h < 12 ? "오전" : "오후";
   const h12 = h % 12 === 0 ? 12 : h % 12;
   return `${period} ${h12}:${String(m).padStart(2, "0")}`;
+}
+
+/** "09:30" → "오전 9:30", "09:30 / 11:30" → "오전 9:30 / 11:30" (같은 오전·오후는 한 번만) */
+export function koTime(time: string) {
+  let prev = "";
+  return splitTimes(time)
+    .map((t) => {
+      const ko = koTimeOne(t);
+      const [period, clock] = ko.split(" ");
+      const out = period === prev ? clock : ko;
+      prev = period;
+      return out;
+    })
+    .join(" / ");
 }
 
 export function youtubeThumb(id: string, size: "hq" | "maxres" = "hq") {

@@ -14,7 +14,7 @@ import {
   SparkleIcon,
 } from "@/components/icons";
 import { YouTubePlayer } from "@/components/youtube-player";
-import { koDate, koTime, shortDate } from "@/lib/format";
+import { koDate, koTime, shortDate, splitTimes } from "@/lib/format";
 import { fullAddress, site } from "@/lib/site";
 import type { Bulletin, Department, Sermon, WorshipTime } from "@/lib/types";
 
@@ -118,13 +118,6 @@ export function Welcome() {
   );
 }
 
-const DAY_EN: Record<string, string> = {
-  주일: "SUNDAY",
-  수요일: "WEDNESDAY",
-  금요일: "FRIDAY",
-  토요일: "SATURDAY",
-};
-
 /* 예배 시간: 모바일은 리스트, 데스크톱은 카드 4개 */
 export function Worship({ times }: { times: WorshipTime[] }) {
   return (
@@ -151,22 +144,18 @@ export function Worship({ times }: { times: WorshipTime[] }) {
           {times.map((t) => (
             <article
               key={t.id}
-              className={`flex min-h-80 flex-col gap-1 rounded-[22px] px-6.5 py-7 ${t.highlight ? "bg-navy text-cream" : "bg-white shadow-card"}`}
+              className={`flex min-h-75 flex-col gap-1 rounded-[22px] px-6.5 py-7 ${t.highlight ? "bg-navy text-cream" : "bg-white shadow-card"}`}
             >
-              <span
-                className={`eyebrow ${t.highlight ? "text-brand-yellow" : "text-brand-blue"}`}
-              >
-                {t.kind === "next-generation"
-                  ? "NEXT GENERATION"
-                  : (DAY_EN[t.day_label] ?? t.day_label)}
-              </span>
               <h3 className="mt-2.5 text-[22px] font-bold tracking-tight">
                 {t.name}
               </h3>
+              {/* 시간이 여러 번이면 한 줄에 하나씩 */}
               <span
-                className={`mt-auto font-en text-5xl leading-tight font-bold tabular-nums ${t.highlight ? "" : "text-navy"}`}
+                className={`mt-auto grid font-en text-5xl leading-tight font-bold tabular-nums ${t.highlight ? "" : "text-navy"}`}
               >
-                {t.time}
+                {splitTimes(t.time).map((tm) => (
+                  <span key={tm}>{tm}</span>
+                ))}
               </span>
               <span
                 className={`mt-3.5 border-t border-dashed pt-3.5 text-sm ${t.highlight ? "border-cream/20 text-cream/65" : "border-line text-sub"}`}
@@ -181,20 +170,32 @@ export function Worship({ times }: { times: WorshipTime[] }) {
   );
 }
 
-/* 섬기는이들 소개 */
-export function Leadership() {
+/* 담임목사 소개 */
+export function Pastor() {
   return (
     <section className="p-5 lg:p-11">
       <div className="mx-auto grid max-w-[1352px] overflow-hidden rounded-[22px] bg-white shadow-card ring-1 ring-line lg:grid-cols-2">
-        <PhotoPlaceholder label="섬기는이들 사진" className="aspect-[4/3]" />
-        <div className="grid content-center gap-3.5 p-7 lg:p-14">
-          <span className="eyebrow text-brand-blue">Leadership</span>
-          <h2 className="text-2xl leading-snug font-black tracking-[-0.03em] lg:text-[34px]">
-            [섬기는이들의 한마디]
-          </h2>
-          <p className="max-w-[36ch] text-[15px] leading-relaxed text-sub lg:text-base">
-            [말씀구절]
-          </p>
+        <PhotoPlaceholder label="사진" className="aspect-[4/3]" />
+        <div className="grid content-center gap-5 p-7 text-center lg:gap-7 lg:p-14 lg:text-left">
+          <span className="eyebrow text-brand-blue">담임목사 인사말</span>
+          <div className="font-bold lg:text-[20px] text-ink">
+            빛은 스스로를 비추지 않습니다.
+            <br />
+            빛이 닿는 곳이 밝아질 뿐입니다.
+            <br />
+            빛으로교회는 빛의 근원이 아니라,
+            <br />
+            주님의 빛이 닿는 자리가 되기를 소망합니다.
+            <br />
+            우리가 드러나는 교회가 아니라,
+            <br />
+            우리를 통해 주님이 드러나는 교회. 그 자리에 당신을 초대합니다.
+          </div>
+          <cite className="text-[13px] leading-relaxed text-sub lg:text-sm">
+            &ldquo;어두운 데에 빛이 비치라 말씀하셨던 그 하나님께서 그리스도의
+            얼굴에 있는 하나님의 영광을 아는 빛을 우리 마음에
+            비추셨느니라&rdquo; (고린도후서 4:6)
+          </cite>
         </div>
       </div>
     </section>
@@ -228,7 +229,7 @@ export function NextGeneration({ departments }: { departments: Department[] }) {
               <small className="font-en text-[10px] font-semibold tracking-[0.08em] opacity-70">
                 {d.name_en}
               </small>
-              <b className="text-sm">{d.name}</b>
+              <b className="text-sm">{d.menu_name}</b>
             </Link>
           ))}
         </div>
@@ -255,7 +256,10 @@ export function NextGeneration({ departments }: { departments: Department[] }) {
               <div className="flex flex-1 flex-col gap-1.5 px-6.5 pt-6 pb-6.5">
                 <small className="eyebrow text-brand-blue">{d.name_en}</small>
                 <h3 className="text-[22px] font-bold tracking-tight">
-                  {d.name}
+                  {d.menu_name}
+                  <small className="ml-2 text-sm font-medium text-sub">
+                    {d.name}
+                  </small>
                 </h3>
                 <p className="mb-3.5 flex-1 text-sm text-sub">{d.intro}</p>
                 <Link
@@ -325,7 +329,7 @@ export function Location() {
           <p className="text-[13px] text-sub lg:text-base">
             <b className="text-ink">{fullAddress}</b>
             <br />
-            {site.parking}
+            {site.directions}
           </p>
           <Link
             href="/about/location"
