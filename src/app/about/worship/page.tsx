@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { PageHeader } from "@/components/page-header";
 import { Container } from "@/components/ui";
 import { getDepartments, getWorshipTimes } from "@/lib/data";
 import { koTime } from "@/lib/format";
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = { title: "예배안내" };
 export const revalidate = 300;
@@ -36,7 +38,7 @@ export default async function WorshipPage() {
               >
                 <h3 className="text-lg font-bold">{t.name}</h3>
                 <span
-                  className={`font-en text-4xl font-bold tabular-nums ${t.highlight ? "" : "text-navy"}`}
+                  className={`mt-3 font-en text-4xl font-bold tabular-nums ${t.highlight ? "" : "text-navy"}`}
                 >
                   {t.time}
                 </span>
@@ -58,9 +60,10 @@ export default async function WorshipPage() {
             </small>
           </h2>
           <div className="overflow-x-auto rounded-[22px] bg-white shadow-card">
-            <table className="w-full min-w-[480px] text-left text-sm lg:text-base">
+            <table className="w-full min-w-[600px] text-left text-sm lg:text-base">
               <thead className="text-xs text-sub">
                 <tr className="border-b border-line">
+                  <th className="px-5 py-3 font-bold">이름</th>
                   <th className="px-5 py-3 font-bold">부서</th>
                   <th className="px-5 py-3 font-bold">대상</th>
                   <th className="px-5 py-3 font-bold">시간</th>
@@ -73,7 +76,15 @@ export default async function WorshipPage() {
                     key={d.slug}
                     className="border-b border-line last:border-0"
                   >
-                    <td className="px-5 py-4 font-bold">{d.name}</td>
+                    <td className="px-5 py-4">
+                      <Link
+                        href={`/next-generation/${d.slug}`}
+                        className="font-bold text-navy hover:text-brand-blue"
+                      >
+                        {d.menu_name}
+                      </Link>
+                    </td>
+                    <td className="px-5 py-4">{d.name}</td>
                     <td className="px-5 py-4 text-sub">{d.age_range}</td>
                     <td className="px-5 py-4 tabular-nums">{d.time_label}</td>
                     <td className="px-5 py-4 text-sub">{d.place}</td>
@@ -82,6 +93,10 @@ export default async function WorshipPage() {
               </tbody>
             </table>
           </div>
+          <p className="text-sm leading-relaxed text-sub lg:text-[15px]">
+            <b className="mr-1.5 text-navy">부모님께：</b>
+            {site.parentNote}
+          </p>
         </section>
       </Container>
     </>

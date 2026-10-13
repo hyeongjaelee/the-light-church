@@ -20,10 +20,29 @@ export default async function PeoplePage() {
             ) : (
               <PhotoPlaceholder label="사진" className="aspect-[4/5]" />
             )}
-            <div className="grid gap-0.5 p-4 lg:p-5">
-              <small className="text-xs font-bold text-brand-blue lg:text-sm">{p.role}</small>
-              <b className="text-base lg:text-lg">{p.name}</b>
-              {p.bio && <p className="mt-1 text-xs text-sub lg:text-sm">{p.bio}</p>}
+            <div className="grid content-start gap-2.5 p-4 lg:gap-3 lg:p-5">
+              <div className="grid gap-0.5">
+                <small className="text-xs font-bold text-brand-blue lg:text-sm">{p.role}</small>
+                <b className="text-lg tracking-tight lg:text-xl">{p.name}</b>
+              </div>
+              {/* 담당: "목회비서, 청년 양육" 처럼 쉼표+공백으로 구분 ("1,2부" 같은 쉼표는 그대로 둠) */}
+              {p.duty && (
+                <ul aria-label="담당" className="flex flex-wrap gap-1">
+                  {p.duty.split(", ").map((d) => (
+                    <li
+                      key={d}
+                      className="rounded-full bg-cream px-2.5 py-1 text-[11px] font-semibold text-navy ring-1 ring-line lg:text-xs"
+                    >
+                      {d}
+                    </li>
+                  ))}
+                </ul>
+              )}
+              {p.bio && (
+                <p className="border-t border-dashed border-line pt-2.5 text-xs leading-relaxed text-sub lg:text-sm">
+                  {p.bio}
+                </p>
+              )}
             </div>
           </article>
         ))}

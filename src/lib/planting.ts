@@ -224,3 +224,45 @@ export const visionWeeks = [
     ],
   },
 ];
+
+// 개척 이야기 > 안내: 창립까지의 여정 (highlight: 강조할 일정)
+export const journey: { when: string; what: string; highlight?: boolean }[] = [
+  { when: "2026년 7월", what: "1차 비전나눔 (7/11 · 7/25)" },
+  {
+    when: "2026년 9월",
+    what: "2차 비전나눔: 복음 · 복음적 교회 · 복음 생태계 (9/5 · 9/12 · 9/19)",
+  },
+  {
+    when: "2026년 10월 12일",
+    what: "위례 힘찬프라자 6층 예배 처소 확정, 공사 시작",
+  },
+  { when: "2026년 10월 19일", what: "공사 시작" },
+  {
+    when: "2026년 10월 17일 ~ 11월 14일",
+    what: "개척 준비기도회 (매주 토요일, 5주)",
+    highlight: true,
+  },
+  {
+    when: "2026년 12월 6일 · 13일 · 20일",
+    what: "개척 후원기도회 (주일 오후 2시)",
+    highlight: true,
+  },
+  {
+    when: "2026년 12월 31일",
+    what: "금광교회 송구영신예배에서 파송",
+    highlight: true,
+  },
+  { when: "2027년 1월 3일(주일)", what: "빛으로교회 첫 예배", highlight: true },
+];
+
+// 개척 이야기 > 안내: 빛이 닿는 자리 (LUMEN)
+export const lumenSteps = [
+  { word: "존재", text: "빛이신 하나님이 계십니다", ref: "요 1:5" },
+  { word: "비춤", text: "그분이 우리 마음에 빛을 비추십니다", ref: "고후 4:6" },
+  { word: "드러남", text: "빛이 닿은 삶이 드러납니다", ref: "엡 5:13" },
+  {
+    word: "경험",
+    text: "그리고 우리는 그 빛 안에서 살아갑니다",
+    ref: "요 8:12",
+  },
+];

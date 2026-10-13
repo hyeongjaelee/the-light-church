@@ -16,8 +16,16 @@ export const site = {
   addressDetail: "힘찬프라자 6층",
   phone: "010-4108-9810",
   email: "[이메일]",
-  parking: "[주차 안내 입력 예정]",
-  transit: "[대중교통 안내 입력 예정]",
+  transit:
+    "지하철 8호선 남위례역 3번 출구, 도보 약 1분 / 버스 [정류장명 · 노선]",
+  parking:
+    "힘찬프라자 건물 주차장 [주일 무료 여부 · 대수 · 출입구]. 주차가 어려우면 대중교통 이용을 부탁드립니다.",
+  elevator: "6층 하차 후 [열린 방향] — 환영팀이 입구에서 맞습니다",
+  // 다음세대 부서 화면·예배안내에 보이는 부모님 안내
+  parentNote:
+    "처음 오시면 환영팀이 부서실까지 함께 모시고, 아이 이름과 보호자 연락처를 받습니다.",
+  // 첫 화면 '오시는 길' 요약에 쓰는 한 줄
+  directions: "지하철 8호선 남위례역 인근 · 힘찬프라자 건물 주차장 이용",
   verse: { ref: "MATTHEW 5:14", text: "너희는 세상의 빛이라" },
   slogan: "예수님으로 가득한 교회",
   sns: {
@@ -58,8 +66,8 @@ export const MENU: MenuItem[] = [
     sub: [
       { label: "비전 · 핵심가치", href: "/about/church" },
       { label: "섬기는이들", href: "/about/people" },
-      { label: "오시는길", href: "/about/location" },
       { label: "예배안내", href: "/about/worship" },
+      { label: "오시는길", href: "/about/location" },
     ],
   },
   {
@@ -78,9 +86,11 @@ export const MENU: MenuItem[] = [
     ko: "다음세대",
     href: "/next-generation/infant",
     sub: [
-      { label: "영아부", href: "/next-generation/infant" },
-      { label: "초등부", href: "/next-generation/elementary" },
-      { label: "청년부", href: "/next-generation/youth" },
+      { label: "빛뜰", href: "/next-generation/infant" },
+      { label: "빛깔", href: "/next-generation/kinder" },
+      { label: "빛냄", href: "/next-generation/elementary" },
+      { label: "빛속", href: "/next-generation/teens" },
+      { label: "빛위드", href: "/next-generation/youth" },
     ],
   },
   {

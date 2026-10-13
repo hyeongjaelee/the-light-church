@@ -192,9 +192,9 @@ export function LightOn() {
           <>
             <p
               aria-live="polite"
-              className="text-[20px] font-bold tracking-tight lg:text-[28px]"
+              className="text-[14px] font-bold tracking-tight lg:text-[28px]"
             >
-              지금 이 순간에도 우리는 빛으로 살아갑니다
+              지금 이 순간에도 주님은 우리를 통해 위례에 빛을 비추십니다
             </p>
             <button
               type="button"
