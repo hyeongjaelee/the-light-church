@@ -11,18 +11,32 @@ export default async function PeoplePage() {
   const staff = await getStaff();
   return (
     <>
-      <PageHeader path="/about/people" description="빛으로교회를 함께 섬기는 분들을 소개합니다." />
+      <PageHeader
+        path="/about/people"
+        description="빛으로교회를 함께 섬기는 분들을 소개합니다."
+      />
       <Container className="grid grid-cols-2 gap-3 py-10 sm:grid-cols-3 lg:grid-cols-4 lg:gap-6 lg:py-20">
         {staff.map((p) => (
-          <article key={p.id} className="overflow-hidden rounded-[22px] bg-white shadow-card">
+          <article
+            key={p.id}
+            className="overflow-hidden rounded-[22px] bg-white shadow-card"
+          >
             {p.photo_url ? (
-              <Image src={p.photo_url} alt={`${p.role} ${p.name}`} width={600} height={750} className="aspect-[4/5] object-cover" />
+              <Image
+                src={p.photo_url}
+                alt={`${p.role} ${p.name}`}
+                width={600}
+                height={750}
+                className="aspect-[4/5] object-cover"
+              />
             ) : (
               <PhotoPlaceholder label="사진" className="aspect-[4/5]" />
             )}
             <div className="grid content-start gap-2.5 p-4 lg:gap-3 lg:p-5">
               <div className="grid gap-0.5">
-                <small className="text-xs font-bold text-brand-blue lg:text-sm">{p.role}</small>
+                <small className="text-xs font-bold text-brand-blue lg:text-sm">
+                  {p.role}
+                </small>
                 <b className="text-lg tracking-tight lg:text-xl">{p.name}</b>
               </div>
               {/* 담당: "목회비서, 청년 양육" 처럼 쉼표+공백으로 구분 ("1,2부" 같은 쉼표는 그대로 둠) */}
@@ -37,11 +51,6 @@ export default async function PeoplePage() {
                     </li>
                   ))}
                 </ul>
-              )}
-              {p.bio && (
-                <p className="border-t border-dashed border-line pt-2.5 text-xs leading-relaxed text-sub lg:text-sm">
-                  {p.bio}
-                </p>
               )}
             </div>
           </article>

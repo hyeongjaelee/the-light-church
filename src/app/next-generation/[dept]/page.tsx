@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { PageHeader } from "@/components/page-header";
+import { ParentNote } from "@/components/parent-note";
 import { Container, PhotoPlaceholder } from "@/components/ui";
 import { getDepartment } from "@/lib/data";
-import { site } from "@/lib/site";
 import { DEPARTMENT_SLUGS, type DepartmentSlug } from "@/lib/types";
 
 export const revalidate = 300;
@@ -57,7 +57,7 @@ export default async function DepartmentPage({
           <span className="eyebrow text-brand-blue">
             {d.name_en} · {d.name}
           </span>
-          <h2 className="text-xl leading-snug font-black [text-wrap:auto]! lg:text-[28px]">
+          <h2 className="text-xl text-justify break-all leading-snug font-black [text-wrap:auto]! lg:text-[28px]">
             {d.intro}
           </h2>
           <dl className="grid gap-3 rounded-[22px] bg-white p-5 shadow-card lg:p-6">
@@ -72,11 +72,7 @@ export default async function DepartmentPage({
             ))}
           </dl>
           {/* 청년부를 뺀 어린이·청소년 부서에만 부모님 안내 */}
-          {d.slug !== "youth" && (
-            <p className="rounded-[18px] bg-brand-yellow/20 px-5 py-4 text-sm leading-relaxed lg:text-[15px]">
-              <b className="mr-1.5 text-navy">부모님께：</b> {site.parentNote}
-            </p>
-          )}
+          {d.slug !== "youth" && <ParentNote />}
         </div>
       </Container>
     </>

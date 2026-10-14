@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHeader } from "@/components/page-header";
+import { ParentNote } from "@/components/parent-note";
 import { Container } from "@/components/ui";
 import { getDepartments, getWorshipTimes } from "@/lib/data";
 import { koTime } from "@/lib/format";
-import { site } from "@/lib/site";
 
 export const metadata: Metadata = { title: "예배안내" };
 export const revalidate = 300;
@@ -93,10 +93,7 @@ export default async function WorshipPage() {
               </tbody>
             </table>
           </div>
-          <p className="text-sm leading-relaxed text-sub lg:text-[15px]">
-            <b className="mr-1.5 text-navy">부모님께：</b>
-            {site.parentNote}
-          </p>
+          <ParentNote />
         </section>
       </Container>
     </>
