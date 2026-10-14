@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/page-header";
+import { CityIcon, HouseIcon, PeopleIcon, PersonIcon } from "@/components/icons";
 import { Container } from "@/components/ui";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = { title: "교회소개" };
 
 const visionPath = [
-  { step: "01", title: "한 사람의 회복", text: "복음이 한 영혼을 밝힙니다" },
-  { step: "02", title: "가정", text: "회복된 빛이 가정을 세웁니다" },
-  { step: "03", title: "공동체", text: "함께 모여 빛의 공동체가 됩니다" },
-  { step: "04", title: "도시", text: "세상의 빛으로 도시를 비춥니다" },
+  { step: "01", Icon: PersonIcon, title: "한 사람의 회복", text: "복음이 한 영혼을 밝힙니다" },
+  { step: "02", Icon: HouseIcon, title: "가정", text: "회복된 빛이 가정을 세웁니다" },
+  { step: "03", Icon: PeopleIcon, title: "공동체", text: "함께 모여 빛의 공동체가 됩니다" },
+  { step: "04", Icon: CityIcon, title: "도시", text: "세상의 빛으로 도시를 비춥니다" },
 ];
 
 const values = [
@@ -72,10 +73,9 @@ export default function ChurchPage() {
             {visionPath.map((p) => (
               <li key={p.step} className="relative grid content-start gap-1.5 lg:gap-3.5">
                 <span className="absolute top-1 -left-11 size-6 rounded-full bg-brand-yellow shadow-[0_0_0_6px_var(--color-brand-blue)] lg:static" />
-                <div className="flex items-baseline gap-2.5 lg:flex-col lg:items-start lg:gap-3.5">
-                  <span className="font-en text-[28px] leading-none font-extrabold text-brand-yellow lg:text-[44px]">
-                    {p.step}
-                  </span>
+                <div className="flex items-center gap-2.5 lg:flex-col lg:items-start lg:gap-3.5">
+                  <p.Icon className="size-7 text-brand-yellow lg:size-11" />
+                  <span className="sr-only">{p.step}</span>
                   <h3 className="text-lg font-bold lg:text-[22px]">{p.title}</h3>
                 </div>
                 <p className="text-sm leading-relaxed text-white/85 lg:text-[15px]">

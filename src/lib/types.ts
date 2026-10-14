@@ -38,8 +38,6 @@ export type Staff = {
   photo_url: string | null;
   /** 담당 사역. 쉼표로 구분 (예: "목회비서, 청년 양육") */
   duty: string | null;
-  /** 한 줄 소개 (본인 작성) */
-  bio: string | null;
   sort_order: number;
 };
 

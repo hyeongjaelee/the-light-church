@@ -29,7 +29,7 @@ export const site = {
   verse: { ref: "MATTHEW 5:14", text: "너희는 세상의 빛이라" },
   slogan: "예수님으로 가득한 교회",
   sns: {
-    instagram: "https://www.instagram.com/thelightchurch_seongnam/",
+    instagram: "https://www.instagram.com/thelightchurch_wirye/",
     youtube: "https://www.youtube.com/@성남빛으로교회",
     blog: "", // 링크가 생기면 입력 (비어 있으면 '준비 중'으로 표시)
   },

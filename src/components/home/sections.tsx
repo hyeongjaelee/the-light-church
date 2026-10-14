@@ -110,7 +110,10 @@ export function Welcome() {
             </strong>
           </p>
           <p className="text-[12px] leading-relaxed text-cream/50 lg:text-xl">
-            “빛이 어둠에 비치되, 어둠이 깨닫지 못하더라” (요 1:5)
+            <cite>
+              &ldquo;그리스도를 섬기는 자는 하나님을 기쁘시게 하며 사람에게도
+              칭찬을 받느니라&rdquo; (롬 14:18)
+            </cite>
           </p>
         </div>
       </div>

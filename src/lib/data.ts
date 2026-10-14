@@ -114,7 +114,7 @@ export async function getStaff(): Promise<Staff[]> {
   if (!supabase) return sampleStaff;
   const { data, error } = await supabase
     .from("staff")
-    .select("id, name, role, photo_url, duty, bio, sort_order")
+    .select("id, name, role, photo_url, duty, sort_order")
     .order("sort_order");
   if (error) fail("섬기는이들", error);
   return data ?? [];

@@ -41,10 +41,6 @@ export default function GreetingPage() {
             2027년 1월 개척을 목표로 <br className="sm:hidden" />
             준비하고 있습니다.
           </p>
-          <p className="mb-10 text-[15px] text-white/68 lg:text-lg">
-            &ldquo;빛이 어둠에 비치되, 어둠이 깨닫지 못하더라&rdquo;{" "}
-            <b className="font-semibold text-brand-yellow">요한복음 1:5</b>
-          </p>
           <div className="mb-12 flex flex-wrap justify-center gap-2.5">
             <span className="rounded-full border border-brand-yellow/50 bg-brand-yellow/16 px-[18px] py-2 text-sm font-semibold text-brand-yellow">
               복음의 큰 숲 만들기
@@ -206,11 +202,17 @@ export default function GreetingPage() {
       <section className="border-t border-line bg-white">
         <Container className="grid max-w-[880px] gap-6 py-16 lg:gap-8 lg:py-24">
           <Heading eyebrow="WHAT WE BELIEVE" title="우리가 믿는 것" />
-          <p className="rounded-[18px] border-l-4 border-brand-yellow bg-cream px-6 py-5 text-[15px] leading-[1.9] lg:px-8 lg:py-6 lg:text-lg">
-            빛으로교회는 <b>대한예수교장로회(합동)</b> 소속으로, 성경이
-            유일무이하고 오류가 없는 근본으로 생각하며, 말씀을 따라 살아가는
-            신앙과 생활의 규범으로 믿으며, <b>웨스트민스터 신앙고백서</b>에 따른
-            개혁주의 신앙을 믿음으로 고백합니다.
+          {/* 양쪽 정렬 + 글자 단위 줄바꿈: 줄 끝이 오른쪽에 가지런히 맞음 */}
+          <p className="rounded-[18px] border-l-4 border-brand-yellow bg-cream px-6 py-5 text-justify text-[15px] leading-[1.9] break-all lg:px-8 lg:py-6 lg:text-lg">
+            빛으로교회는 <b>대한예수교장로회(합동)</b> 소속 교회로서, 신구약
+            성경 66권이 성령의 감동으로 기록된 정확무오한 하나님의 말씀이며,
+            신앙과 생활의 유일한 법칙임을 믿습니다. 우리는 사도신경과 니케아
+            신경에 담긴 보편 교회의 신앙을 계승하며, 웨스트민스터 신앙고백서와
+            대·소요리문답을 성경의 가르침을 가장 충실하게 요약한 신앙의 표준으로
+            고백합니다. 오직 성경, 오직 은혜, 오직 믿음, 오직 그리스도, 오직
+            하나님께 영광이라는 종교개혁의 정신 위에서, 삼위일체 하나님의 주권적
+            은혜로 구원받은 백성으로 살아가며, 말씀을 따라 하나님의 영광을
+            드러내는 교회가 되기를 소망합니다.
           </p>
         </Container>
       </section>

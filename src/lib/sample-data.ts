@@ -97,7 +97,6 @@ export const sampleStaff: Staff[] = [
     role: "담임목사",
     photo_url: null,
     duty: "빛으로교회 담임",
-    bio: "청년 사역 14년, 금광교회에서 파송",
     sort_order: 1,
   },
   {
@@ -106,7 +105,6 @@ export const sampleStaff: Staff[] = [
     role: "목양 간사",
     photo_url: null,
     duty: "목회비서, 청년 양육",
-    bio: null,
     sort_order: 2,
   },
   {
@@ -114,8 +112,7 @@ export const sampleStaff: Staff[] = [
     name: "이수정",
     role: "유초등부 전도사",
     photo_url: null,
-    duty: "유초등부, 디자인",
-    bio: null,
+    duty: "유초등부, 양육",
     sort_order: 3,
   },
   {
@@ -124,16 +121,14 @@ export const sampleStaff: Staff[] = [
     role: "영유치부 전도사",
     photo_url: null,
     duty: "영유치부, 양육",
-    bio: null,
     sort_order: 4,
   },
   {
     id: "st5",
     name: "최정은",
-    role: "찬양 간사",
+    role: "찬양사",
     photo_url: null,
-    duty: "1,2부 찬양팀",
-    bio: null,
+    duty: "찬양팀 총괄",
     sort_order: 5,
   },
 ];
@@ -174,7 +169,7 @@ export const sampleDepartments: Department[] = [
       "말씀의 빛을 받은 아이들이 친구와 학교에서 그 빛을 내는 연습을 합니다.",
     age_range: "초등 1~6학년",
     time_label: "주일 오전 11:30",
-    place: "키즈카페",
+    place: "2층 무키무키",
     photo_url: null,
     sort_order: 3,
   },

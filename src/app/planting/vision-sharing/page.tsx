@@ -26,7 +26,7 @@ export default function VisionSharingPage() {
       />
 
       <Container className="grid max-w-[1080px] gap-14 py-10 lg:gap-20 lg:py-20">
-        <blockquote className="rounded-r-[14px] border-l-4 border-brand-yellow bg-white px-7 py-6 shadow-card">
+        <blockquote className="rounded-r-[14px] border-l-4 border-brand-yellow bg-white px-7 py-6 shadow-card text-justify break-all">
           <p className="text-lg leading-relaxed font-bold text-navy lg:text-[23px]">
             &ldquo;복음은 우리 존재의 방식, 도시는 우리 존재의 자리, 생태계는
             우리 존재의 이유이다.&rdquo;
@@ -63,7 +63,7 @@ export default function VisionSharingPage() {
                   {w.one}
                 </p>
               </header>
-              <dl className="divide-y divide-line">
+              <dl className="divide-y divide-line text-justify break-all">
                 {w.points.map((p) => (
                   <div key={p.t} className="grid gap-2 px-6 py-5 lg:px-7">
                     <dt className="font-bold">{p.t}</dt>
