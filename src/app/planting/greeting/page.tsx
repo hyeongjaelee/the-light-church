@@ -72,12 +72,12 @@ export default function GreetingPage() {
         <Container className="grid max-w-[880px] gap-6 py-16 lg:gap-8 lg:py-28">
           <Heading eyebrow="GREETING" title="담임목사 인사말" />
           <h3 className="text-[26px] leading-snug font-black tracking-[-0.03em] lg:text-[30px]">
-            빛이 들어가면,{" "}
             <span className="bg-linear-to-t from-brand-yellow/60 from-35% to-transparent to-35%">
-              어둠은 물러갑니다
+              빛이 들어가면
             </span>
+            , 어둠은 물러갑니다
           </h3>
-          <div className="grid gap-5 text-[16px] leading-[1.9] text-ink/85 lg:text-lg">
+          <div className="grid gap-5 text-justify text-[16px] leading-[1.9] text-ink/85 break-all lg:text-lg">
             <p>
               하나님은 창세기 처음부터 어둠 속에 &ldquo;빛이 있으라&rdquo;
               말씀하셨습니다.
