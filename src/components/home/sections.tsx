@@ -15,7 +15,7 @@ import {
 } from "@/components/icons";
 import { YouTubePlayer } from "@/components/youtube-player";
 import { koDate, koTime, shortDate, splitTimes } from "@/lib/format";
-import { fullAddress, site } from "@/lib/site";
+import { asset, fullAddress, site } from "@/lib/site";
 import type { Bulletin, Department, Sermon, WorshipTime } from "@/lib/types";
 
 /* 첫 화면: 이번 주 설교 영상을 배경으로 채우고 그 위에 고정 문구를 얹음 */
@@ -88,27 +88,47 @@ export function ThisWeek({ sermon }: { sermon: Sermon | null }) {
 /* Welcome: 첫 화면 영상과 '빛 켜기' 사이, 같은 남색 배경으로 이어짐 */
 export function Welcome() {
   return (
-    <section className="bg-navy px-5 pt-20 text-center text-cream lg:px-11 lg:pt-32">
-      <div className="mx-auto grid max-w-[1440px] justify-items-center gap-5 lg:gap-8">
-        <h2 className="flex items-center gap-[0.2em] font-en text-[22px] leading-tight font-extrabold tracking-tight lg:text-[44px]">
-          <SparkleIcon className="size-[0.7em] -scale-x-100" />
-          Welcome
-          <SparkleIcon className="size-[0.7em]" />
-        </h2>
+    <section className="grid justify-items-center gap-6 bg-navy pt-20 text-center text-cream lg:gap-10 lg:pt-32">
+      <h2 className="flex items-center gap-[0.2em] px-5 font-en text-[37px] leading-tight font-extrabold tracking-tight lg:px-11 lg:text-[74px]">
+        <SparkleIcon className="size-[0.7em] -scale-x-100" />
+        Welcome
+        <SparkleIcon className="size-[0.7em]" />
+      </h2>
+      {/* knockchurch.com 의 Welcome 영상처럼 화면 폭 가득, 소리 없이 자동 반복되는 배경 영상 */}
+      <div
+        aria-hidden
+        className="pointer-events-none aspect-video w-full overflow-hidden lg:aspect-auto lg:h-[500px]"
+      >
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          disablePictureInPicture
+          width={1920}
+          height={1080}
+          className="size-full object-cover"
+        >
+          <source src={asset("/video/welcome.mp4")} type="video/mp4" />
+        </video>
+      </div>
+      <div className="mx-auto grid max-w-[1440px] justify-items-center px-5 lg:px-11">
         <div className="grid gap-2 break-keep lg:gap-3">
-          <span>
-            <strong className="text-[36px] font-black tracking-[-0.03em] lg:text-[72px]">
-              빛으로교인
-            </strong>
-            <strong className="text-[18px] leading-relaxed text-cream lg:text-[36px]">
-              은
-            </strong>
-          </span>
-          <p className="text-[18px] leading-relaxed text-cream lg:text-[36px]">
-            <strong>
-              모든 곳에서 예수 그리스도가 나타나게 하는 삶을 살아냅니다
-            </strong>
-          </p>
+          <div>
+            <span>
+              <strong className="text-[32px] font-black tracking-[-0.03em] lg:text-[64px]">
+                빛으로교인
+              </strong>
+              <strong className="text-[18px] leading-relaxed text-cream lg:text-[36px]">
+                은
+              </strong>
+            </span>
+            <p className="text-[18px] leading-relaxed text-cream lg:text-[36px]">
+              <strong>
+                모든 곳에서 예수 그리스도가 나타나게 하는 삶을 살아냅니다
+              </strong>
+            </p>
+          </div>
           <p className="text-[12px] leading-relaxed text-cream/50 lg:text-xl">
             <cite>
               &ldquo;그리스도를 섬기는 자는 하나님을 기쁘시게 하며 사람에게도
